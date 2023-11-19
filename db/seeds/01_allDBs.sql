@@ -1,3 +1,5 @@
+-- \i db/seeds/01_allDBs.sql
+
 INSERT INTO users (name, email, password) VALUES ('AuthorOne', 'authorone@ymail.com', 'password');
 INSERT INTO users (name, email, password) VALUES ('AuthorTwo', 'authortwo@ymail.com', 'password');
 INSERT INTO users (name, email, password) VALUES ('AuthorThree', 'authorthree@ymail.com', 'password');

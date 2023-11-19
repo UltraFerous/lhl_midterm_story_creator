@@ -1,4 +1,5 @@
 -- Drop and recreate Users table (Example)
+-- \i db/schema/01_allDBs.sql
 
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS stories CASCADE;
