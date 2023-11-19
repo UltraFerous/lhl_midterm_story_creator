@@ -2,7 +2,17 @@
 
 ### '/' - Index/home page
 
-GET '/' - Render nav bar, create story button, and list of existing stories
+**GET '/' - Render nav bar, create story button, and list of existing stories**
+
+  - Render: index.ejs
+  - Query: 
+    - session
+      - login status
+    - stories
+      - all properties
+    - users
+      - id
+      - username
 
 ### '/stories'
 
