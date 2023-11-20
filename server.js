@@ -38,9 +38,16 @@ const contributionsApiRoutes = require('./routes/contributions-api');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/users', usersRoutes);
+// app.use('/api/users', userApiRoutes);
+// app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
+app.use('/users-api', userApiRoutes);
+app.use('/users', usersRoutes);
+app.use('/stories', storiesRoutes);
+app.use('/stories-api', storiesApiRoutes);
+app.use('/contributions', contributionsRoutes);
+app.use('/contributions-api', contributionsApiRoutes);
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
