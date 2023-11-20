@@ -2,7 +2,7 @@ const {pool} = require('../connection')
 
 const getAllStories = function() {
   return pool
-    .query(`SELECT title, name, body, status FROM stories JOIN users ON author_id = users.id;`)
+    .query(`SELECT title, stories.id, name, body, status FROM stories JOIN users ON author_id = users.id;`)
     .then((result) => {
       return result.rows
     })
