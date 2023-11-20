@@ -20,10 +20,14 @@ router.get('/:id', (req, res) => {
 // Redirect to index page '/'
 router.get('/', (req, res) => {
   getAllStories()
-  .then(function(data){
-    return res.send(data);
-  }
-  );
+  .then(function(storyData) {
+    const templateVars = {
+      story: storyData
+    };
+    return res.render('index', templateVars);
+  }).catch(function(err){
+    console.log("Homepage Error:", err);
+  })
 });
 
 // Render create new story page
