@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Story Creator</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -18,21 +18,17 @@
 </head>
 
 <body>
-  <h1>Start a new story.</h1>
-  <h2>Collaborate with others to craft tales...</h2>
-  <h1>Browse Stories.</h1>
-
-  <article>
-    <h2>STORY TITLE</h2>
-    <h3>AUTHOR ID</h3>
-    <h4> Story text</h4>
-    <footer> 
-      <button type="submit">CONTRIBUTE</button>
-      <h4>STATUS</h4>
-    </footer>
-
-  </article>
-
+  <%- include('partials/_nav') %>
+  <main>
+    <section>
+      <h1>Start a new story.</h1>
+      <p>Collaborate with others to craft tales of swashbuckling adventure, fiery romance, or gut-busting comedy. The sky’s the limit.</p>
+    </section>
+    <section>
+      <h1>Browse stories</h1>
+      <!-- programmatically insert story preview divs here -->
+    </section>
+  </main>
 </body>
 
 </html>
