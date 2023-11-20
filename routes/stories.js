@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { getAllStories, test } = require("../db/stories/stories");
+const { getAllStories } = require("../db/stories/homepageStories");
 
 // Redirect to index page '/'
 router.get('/', (req, res) => {
-  console.log("12345");
   getAllStories()
   .then(function(data){
-    console.log(data);
     res.send(data);
   }
   );
