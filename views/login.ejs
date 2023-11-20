@@ -21,11 +21,11 @@
   <%- include('partials/_nav') %>
   <main>
     <h1>Log In</h1>
-    <form action="#" method="POST">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="Enter username">
+    <form action="/api/users/login" method="POST">
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="Enter email address" required>
       <label for="password">Password</label>
-      <input type="password" name="password" placeholder="Enter password">
+      <input type="password" name="password" placeholder="Enter password" required>
       <button type="submit">Submit</button>
     </form>
   </main>

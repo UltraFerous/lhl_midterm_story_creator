@@ -33,6 +33,13 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
+// Middleware to store user ID in res.local
+// Once in res.local, it can be accessed in every route without
+// having to pass it into every res.render()
+app.use((req, res, next) => {
+  res.locals.userId = req.session.userId;
+  next();
+});
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
