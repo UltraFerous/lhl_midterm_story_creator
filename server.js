@@ -6,7 +6,6 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
-const { getIndividualUser } = require('./db/queries/users');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -34,22 +33,6 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
-// Middleware to store user ID in res.local
-// Once in res.local, it can be accessed in every route without
-// having to pass it into every res.render()
-app.use((req, res, next) => {
-  res.locals.userId = req.session.userId;
-  getIndividualUser('id', res.locals.userId)
-    .then(response => {
-      res.locals.name = response[0].name;
-      res.locals.email = response[0].email;
-      next();
-    })
-    .catch(error => {
-      console.log(error);
-      next(error);
-    })
-});
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -66,12 +49,12 @@ const contributionsApiRoutes = require('./routes/contributions-api');
 // app.use('/api/users', userApiRoutes);
 // app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
-app.use('/users-api', userApiRoutes);
+app.use('/api/users', userApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/stories', storiesRoutes);
-app.use('/stories-api', storiesApiRoutes);
+app.use('/api/stories', storiesApiRoutes);
 app.use('/contributions', contributionsRoutes);
-app.use('/contributions-api', contributionsApiRoutes);
+app.use('/api/contributions', contributionsApiRoutes);
 //Each one needs own folder in db
 
 // Home page
