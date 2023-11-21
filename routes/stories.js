@@ -8,14 +8,6 @@ const cleanData = function(data){
   const preivewLength = 5;
   let previewString = "";
 
-  for(let key of dataKeys){
-    if(data[key].status === true){
-      data[key].status = "Open";
-    }
-    else{
-      data[key].status = "Closed";
-    }
-  }
   for(let text of dataKeys){
     for(let i = 0; i < data[text].body.length && i < preivewLength; i++){
       previewString += data[text].body[i];
@@ -26,15 +18,28 @@ const cleanData = function(data){
   return data;
 };
 
+const openClose = function(data){
+  let dataKeys = Object.keys(data);
+  for(let key of dataKeys){
+    if(data[key].status === true){
+      data[key].status = "Open";
+    }
+    else{
+      data[key].status = "Closed";
+    }
+  }
+  return data
+}
+
 // Render story page for story with matching id
 router.get('/:id', (req, res) => {
   const id = req.params.id;
   getSingleStory(id)
     .then(function(storyData) {
       const templateVars = {
-        storyData: storyData
+        storyData: (storyData)
       };
-      res.render('storyPage', templateVars);
+      res.render('storyPage', openClose(templateVars));
     });
 });
 
@@ -43,7 +48,7 @@ router.get('/', (req, res) => {
   getAllStories()
     .then(function(storyData) {
       const templateVars = {
-        storyData: cleanData(storyData)
+        storyData: openClose(cleanData(storyData))
       };
       console.log(typeof templateVars.storyData);
       console.log(templateVars.storyData);

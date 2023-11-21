@@ -33,7 +33,11 @@
             <h1 class="story-overview-title"> <%= storyData[i].title %> </h1>
             <h2 class="story-overview-author"> <%= storyData[i].name %> </h2>
             <h2 class="story-overview-preview"> <%= storyData[i].body %> </h2>
-            Contribute
+            
+            <a href="/stories/<%= storyData[i].id %>">
+              <button>Contribute</button>
+            </a>
+           
           <h3 class="story-overview-status"> <%= storyData[i].status %> </h3>
           </div> 
        <% }; %>
