@@ -10,12 +10,12 @@ const router  = express.Router();
 
 // Render registration page
 router.get('/register', (req, res) => {
-  res.render('register', {...res.locals});
+  res.render('register', {userData: req.session});
 });
 
 // Render login page
 router.get('/login', (req, res) => {
-  res.render('login', {...res.locals});
+  res.render('login', {userData: req.session});
 });
 
 module.exports = router;

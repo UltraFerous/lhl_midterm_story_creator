@@ -36,7 +36,8 @@ router.get('/:id', (req, res) => {
   getSingleStory(id)
     .then(function(storyData) {
       const templateVars = {
-        storyData: (storyData)
+        storyData: (storyData),
+        userData: req.session
       };
       res.render('storyPage', openClose(templateVars));
     });
@@ -47,10 +48,10 @@ router.get('/', (req, res) => {
   getAllStories()
     .then(function(storyData) {
       const templateVars = {
-        storyData: openClose(cleanData(storyData))
+        storyData: openClose(cleanData(storyData)),
+        userData: req.session
       };
-      console.log(typeof templateVars.storyData);
-      console.log(templateVars.storyData);
+      console.log(req.session);
       res.render('index', templateVars);
     }
     );
