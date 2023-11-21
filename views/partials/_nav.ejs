@@ -1,10 +1,36 @@
 <nav>
   <h3>Story Creator</h3>
-    <% if (!userId) { %>
-    <a href="/users/register"><p>Register</p></a>
-    <a href="/users/login"><p>Log In</p></a>
-    <% } else { %>
-    <a href="#"><p><%= name %></p></a>
-    <a href="#"><p>Log Out</p></a>
+    <% if (!userData || Object.keys(userData).length === 0) { %>
+      <a href="/users/register">Register</a>
+      <a href="/users/login">Log In</a>
+      <% } else { %>
+        <a href="#"><%= userData.name %></a>
+        <a href="#" id="logout">Log Out</a>
     <% } %>
 </nav>
+
+<!-- Click handler on the Log Out link -->
+<script>
+  $(document).ready(function() {
+    $('#logout').click(function(e) {
+      e.preventDefault();
+
+      // Make a POST request to /logout
+      $.ajax({
+        type: 'POST',
+        url: '/api/users/logout',
+        // Handle the success response if needed
+        success: function(data) {
+          console.log('Logout successful');
+
+          // Redirect the user to the home page
+          window.location.href = '/';
+        },
+        error: function(error) {
+          // Handle the error response if needed
+          console.error('Logout failed', error);
+        }
+      });
+    });
+  });
+</script>

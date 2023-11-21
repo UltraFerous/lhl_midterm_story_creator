@@ -29,7 +29,9 @@ router.post('/login', (req, res) => {
   getIndividualUser('email', req.body.email)
     .then(response => {
       if (bcrypt.compareSync(req.body.password, response[0].password)) {
-        req.session.userId = response[0].id;
+        req.session.id = response[0].id;
+        req.session.name = response[0].name;
+        req.session.email = response[0].email;
         res.redirect('/');
       } else {
         // stretch goal: create error message box to display bad password
@@ -42,7 +44,7 @@ router.post('/login', (req, res) => {
 });
 
 // Log out authenticated user and redirect to homage page
-router.delete('/login', (req, res) => {
+router.post('/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
 });
