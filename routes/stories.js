@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
         storyData: (storyData),
         userData: req.session
       };
-      res.render('storyPage', openClose(templateVars));
+      res.render('storyPage', templateVars);
     });
 });
 
