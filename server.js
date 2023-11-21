@@ -62,14 +62,14 @@ app.use('/stories', storiesRoutes);
 app.use('/stories-api', storiesApiRoutes);
 app.use('/contributions', contributionsRoutes);
 app.use('/contributions-api', contributionsApiRoutes);
-
+//Each one needs own folder in db
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.redirect('stories');
 });
 
 app.listen(PORT, () => {
