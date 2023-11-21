@@ -14,19 +14,34 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/index.js"></script>
+  <!-- <script defer src="/scripts/index.js"></script> -->
 </head>
 
 <body>
-  <%- include('partials/_nav') %>
+  <%- include('partials/_nav'); %>
   <main>
     <section>
       <h1>Start a new story.</h1>
       <p>Collaborate with others to craft tales of swashbuckling adventure, fiery romance, or gut-busting comedy. The sky’s the limit.</p>
     </section>
     <section>
-      <h1 class="stories">Browse stories</h1>
+      <h1>Browse stories</h1>
       <!-- programmatically insert story preview divs here -->
+      <article class="story-list">
+        <% for (let i = 0; i < storyData.length; i++) { %>
+          <div class="story-overview"> 
+            <h1 class="story-overview-title"> <%= storyData[i].title %> </h1>
+            <h2 class="story-overview-author"> <%= storyData[i].name %> </h2>
+            <h2 class="story-overview-preview"> <%= storyData[i].body %> </h2>
+            
+            <a href="/stories/<%= storyData[i].id %>">
+              <button>Contribute</button>
+            </a>
+           
+          <h3 class="story-overview-status"> <%= storyData[i].status %> </h3>
+          </div> 
+       <% }; %>
+      </article>
     </section>
   </main>
 </body>
