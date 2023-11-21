@@ -4,7 +4,6 @@ const { getAllStories, test } = require("../db/stories/stories");
 
 // Redirect to index page '/'
 router.get('/', (req, res) => {
-  console.log("12345");
   getAllStories()
   .then(function(data){
     console.log(data);
