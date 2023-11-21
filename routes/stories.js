@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { getAllStories, getSingleStory } = require("../db/stories/stories");
+const { loginCheck } = require('../helpers/loginCheck.js')
 
 const cleanData = function(data){
   let dataKeys = Object.keys(data);
@@ -47,6 +48,7 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
   getAllStories()
     .then(function(storyData) {
+      console.log("LOG CHECK:", loginCheck(req.session));
       const templateVars = {
         storyData: openClose(cleanData(storyData)),
         userData: req.session
