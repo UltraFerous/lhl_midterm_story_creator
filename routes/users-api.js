@@ -7,9 +7,9 @@
 
 const express = require('express');
 const router  = express.Router();
-const { createUser } = require('../db/queries/users-api');
-const { getUserByEmail } = require('../db/queries/users');
 const bcrypt = require("bcryptjs");
+const { createUser } = require('../db/queries/users-api');
+const { getIndividualUser } = require('../db/queries/users');
 
 // Register new user in database and redirect to home page
 router.post('/register', (req, res) => {
@@ -26,11 +26,10 @@ router.post('/register', (req, res) => {
 
 // Authenticate user login and redirect to home page
 router.post('/login', (req, res) => {
-  getUserByEmail(req.body.email)
+  getIndividualUser('email', req.body.email)
     .then(response => {
       if (bcrypt.compareSync(req.body.password, response[0].password)) {
         req.session.userId = response[0].id;
-        console.log(res.locals);
         res.redirect('/');
       } else {
         // stretch goal: create error message box to display bad password
