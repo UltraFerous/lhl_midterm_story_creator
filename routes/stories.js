@@ -54,7 +54,6 @@ router.get('/:id', (req, res) => {
         .then(function(contribtuionData) {
           console.log(contribtuionData);
           templateVars['contData'] = contribtuionData;
-          console.log("TEMP", templateVars);
           res.render('storyPage', templateVars);
         });
     });
@@ -64,7 +63,6 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
   getAllStories()
     .then(function(storyData) {
-      console.log("LOG CHECK:", storyData);
       const templateVars = {
         storyData: openClose(cleanData(storyData)),
         userData: req.session
