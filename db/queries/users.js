@@ -1,4 +1,4 @@
-const db = require('../connection');
+const { db } = require('../connection');
 
 // Get all users from database
 const getUsers = () => {
