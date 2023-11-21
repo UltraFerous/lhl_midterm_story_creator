@@ -1,19 +1,14 @@
 const {pool} = require('../connection')
 
 const getAllStories = function() {
-  console.log("xyz");
   return pool
-    .query(`SELECT * FROM stories;`)
+    .query(`SELECT * FROM stories JOIN users ON author_id = users.id;`)
     .then((result) => {
-      console.log(result.rows);
       return result.rows
     })
     .catch((err) => {
       console.log("ERROR:", err.message);
     });
 };
-const test = function() {
-  return {name: "abc"}
-}
 
-module.exports = { getAllStories, pool, test }
+module.exports = { getAllStories }
