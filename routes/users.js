@@ -14,9 +14,13 @@ router.get('/', (req, res) => {
 });
 
 // Render registration page
-router.get('/register', (req, res) => {});
+router.get('/register', (req, res) => {
+  res.render('register');
+});
 
 // Render login page
-router.get('/login', (req, res) => {});
+router.get('/login', (req, res) => {
+  res.render('login');
+});
 
 module.exports = router;

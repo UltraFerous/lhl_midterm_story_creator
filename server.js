@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require('cookie-session');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -25,6 +26,20 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['codersthinkproblemsdeeply'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+// Middleware to store user ID in res.local
+// Once in res.local, it can be accessed in every route without
+// having to pass it into every res.render()
+app.use((req, res, next) => {
+  res.locals.userId = req.session.userId;
+  next();
+});
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
