@@ -8,6 +8,5 @@ CREATE TABLE votes (
   Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   status BOOLEAN DEFAULT true,
   FOREIGN KEY(author_id) REFERENCES users(id),
-  FOREIGN KEY(contribution_id) REFERENCES contributions(id),
-  UNIQUE (author_id, contribution_id)
+  FOREIGN KEY(contribution_id) REFERENCES contributions(id)
 );
