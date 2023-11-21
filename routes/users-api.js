@@ -30,7 +30,6 @@ router.post('/login', (req, res) => {
     .then(response => {
       if (bcrypt.compareSync(req.body.password, response[0].password)) {
         req.session.userId = response[0].id;
-        console.log(res.locals);
         res.redirect('/');
       } else {
         // stretch goal: create error message box to display bad password
