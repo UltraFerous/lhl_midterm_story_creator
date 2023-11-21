@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const escapeFunc = function(str) {
 //   let div = document.createElement("div");
 //   div.appendChild(document.createTextNode(str));
@@ -54,4 +55,21 @@
 // $(document).ready(function() {
 //   loadStories();
 // });
+=======
+const loadStories = function() {
+  $.ajax({
+    type: 'GET',
+    url: '/stories',
+  }).then(function(data) {
+    $('.stories').empty();
+    console.log("We got the stories!")
+    console.log("Data:", data);
+  })
+};
+
+$(document).ready(function() {
+  console.log("123");
+  loadStories();
+});
+>>>>>>> parent of 41a4f45... Added story display list to homepage
 
