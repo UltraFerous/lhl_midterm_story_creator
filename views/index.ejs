@@ -29,6 +29,7 @@
       <!-- programmatically insert story preview divs here -->
       <article class="story-list">
         <% for (let i = 0; i < storyData.length; i++) { %>
+          <a href="/stories/<%= storyData[i].id %>">
           <div class="story-overview"> 
             <h1 class="story-overview-title"> <%= storyData[i].title %> </h1>
             <h2 class="story-overview-author"> <%= storyData[i].name %> </h2>
@@ -37,9 +38,9 @@
             <a href="/stories/<%= storyData[i].id %>">
               <button>Contribute</button>
             </a>
-           
           <h3 class="story-overview-status"> <%= storyData[i].status %> </h3>
-          </div> 
+          </div>
+        </a>
        <% }; %>
       </article>
     </section>

@@ -1,18 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const { getAllStories } = require("../db/stories/stories");
-const { getSingleStory } = require("../db/stories/singleStory");
+const { getAllStories, getSingleStory } = require("../db/stories/stories");
 
 const cleanData = function(data){
   let dataKeys = Object.keys(data);
-  const preivewLength = 5;
+  const previewLength = 5;
   let previewString = "";
 
   for(let text of dataKeys){
-    for(let i = 0; i < data[text].body.length && i < preivewLength; i++){
+    for(let i = 0; i < data[text].body.length && i < previewLength; i++){
       previewString += data[text].body[i];
     }
-    data[text].body = previewString;
+    data[text].body = previewString + "...";
     previewString = "";
   }
   return data;
