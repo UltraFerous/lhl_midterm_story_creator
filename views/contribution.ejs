@@ -26,7 +26,11 @@
     <h1 class="story-body"> <%= storyData.body %> </h1>
     </div>
     <div class="contribution">
-
+      My contribution
+      <form action="/api/stories/" method="post">
+        <input type="text" id="newTitle" name="newTitle" placeholder="Title"><br>
+        <input type="text" id="newBody" name="newBody" placeholder="Story"><br><br>
+        <input type="submit" value="Submit">
     </div>
   </main>
 </body>

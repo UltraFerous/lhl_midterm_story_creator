@@ -12,9 +12,9 @@ const getAllStories = function() {
     });
 };
 
-const getSingleStory = function(user) {
+const getSingleStory = function(story) {
   return pool
-    .query(`SELECT stories.id, stories.title, users.name, stories.body, stories.status FROM stories JOIN users ON author_id = users.id WHERE stories.id = $1`, [user])
+    .query(`SELECT stories.id, stories.title, users.name, stories.body, stories.status FROM stories JOIN users ON author_id = users.id WHERE stories.id = $1`, [story])
     .then((result) => {
       console.log("ERROR HERE:", result.rows[0])
       return result.rows[0];

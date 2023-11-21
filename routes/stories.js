@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { getAllStories, getSingleStory } = require("../db/stories/stories");
 const { loginCheck } = require('../helpers/loginCheck.js');
+const { contributionData } = require("../db/stories/contributions");
+
 
 const cleanData = function(data) {
   let dataKeys = Object.keys(data);
@@ -44,11 +46,17 @@ router.get('/:id', (req, res) => {
   const id = req.params.id;
   getSingleStory(id)
     .then(function(storyData) {
-      const templateVars = {
+      let templateVars = {
         storyData: (storyData),
         userData: req.session
       };
-      res.render('storyPage', templateVars);
+      contributionData(id)
+        .then(function(contribtuionData) {
+          console.log(contribtuionData);
+          templateVars['contData'] = contribtuionData;
+          console.log("TEMP", templateVars);
+          res.render('storyPage', templateVars);
+        });
     });
 });
 
