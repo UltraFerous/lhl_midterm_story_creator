@@ -1,4 +1,4 @@
-const db = require('../connection');
+const { db } = require('../connection');
 
 const createUser = (email, name, password) => {
   return db
