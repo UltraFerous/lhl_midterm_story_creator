@@ -6,6 +6,7 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
+const { getIndividualUser } = require('./db/queries/users');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -38,7 +39,16 @@ app.use(cookieSession({
 // having to pass it into every res.render()
 app.use((req, res, next) => {
   res.locals.userId = req.session.userId;
-  next();
+  getIndividualUser('id', res.locals.userId)
+    .then(response => {
+      res.locals.name = response[0].name;
+      res.locals.email = response[0].email;
+      next();
+    })
+    .catch(error => {
+      console.log(error);
+      next(error);
+    })
 });
 
 // Separated Routes for each Resource
