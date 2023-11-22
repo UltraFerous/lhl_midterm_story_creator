@@ -3,7 +3,7 @@ const { db } = require('../connection');
 const deleteVote = function(authorId, contributionId) {
   return db
     .query(`
-      DELETE  FROM votes 
+      DELETE FROM votes 
       WHERE author_id = $1
       AND 
       contribution_id = $2
@@ -21,7 +21,7 @@ const addVote = function(authorId, contributionId) {
     .then()
     .catch(function(err){
       console.log("ERROR:", err.message)
-      deleteVote(authorId, contributionId);
+      deleteVote(authorId, contributionId) 
     })
 };
 

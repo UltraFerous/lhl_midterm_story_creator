@@ -49,4 +49,22 @@ const postNewStory = function(userData, postData) {
     });
 };
 
-module.exports = { getAllStories, getSingleStory, postNewStory };
+const getSingleStoryFromContribution = function(contributionID) {
+  return db
+    .query(`
+    SELECT
+    stories.id
+    FROM stories
+    JOIN contributions ON contributions.story_id = stories.id
+    WHERE contributions.id = $1;
+    `, [contributionID])
+    .then((result) => {
+      console.log('RESULT', result.rows[0].id);
+      return result.rows[0].id;
+    })
+    .catch((err) => {
+      console.log("ERROR:", err.message);
+    });
+};
+
+module.exports = { getAllStories, getSingleStory, postNewStory, getSingleStoryFromContribution };
