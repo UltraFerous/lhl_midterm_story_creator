@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { addContribution } = require("../db/stories/contributions");
+const { addContribution } = require("../db/queries/contributions.js");
 const { loginCheck } = require('../helpers/loginCheck.js');
 
 

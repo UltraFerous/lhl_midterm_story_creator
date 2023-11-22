@@ -5,12 +5,13 @@ const createUser = (email, name, password) => {
   .query(`
     INSERT INTO users (email, name, password)
     VALUES($1, $2, $3)
+    RETURNING id, email, name
   `, [email, name, password])
-  .then(data => {
-    return data;
+  .then(result => {
+    return result.rows[0];
   })
   .catch(err => {
-    console.log(err);
+    console.log('Error:', err);
   });
 };
 

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getAllStories, getSingleStory } = require("../db/stories/stories");
+const { getAllStories, getSingleStory } = require("../db/queries/stories.js");
 const { loginCheck } = require('../helpers/loginCheck.js');
-const { contributionData } = require("../db/stories/contributions");
+const { contributionData } = require("../db/queries/contributions.js");
 const { openClose,  cleanData } = require("../helpers/filters.js");
 
 // Render create new story page
