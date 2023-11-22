@@ -31,7 +31,6 @@ router.get('/:id', (req, res) => {
       };
       contributionData(id)
         .then(function(contributionDataResult) {
-          console.log(contributionDataResult);
           templateVars['contData'] = contributionDataResult;
           res.render('storyPage', templateVars);
         });
@@ -46,7 +45,6 @@ router.get('/', (req, res) => {
         storyData: openClose(cleanData(storyData)),
         userData: req.session
       };
-      console.log(req.session);
       res.render('index', templateVars);
     }
     );

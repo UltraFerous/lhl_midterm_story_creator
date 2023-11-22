@@ -78,6 +78,8 @@
     - users
       - id
       - username
+    - contributions
+      - count(*)
 
 ### '/api/contributions'
 
@@ -103,7 +105,9 @@
       - accepted
       - timestamp
 
-**PATCH '/:id/like' - Adjust vote count in database for contribution with matching id**
+### 'api/votes'
+
+**POST '/:id/like' - Add vote in votes table for contribution with matching id**
 
 - Query:
   - session

@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 
 const PORT = process.env.PORT || 8080;
@@ -26,6 +27,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(bodyParser.json());
 app.use(cookieSession({
   name: 'session',
   keys: ['codersthinkproblemsdeeply'],
@@ -42,6 +44,7 @@ const storiesRoutes = require('./routes/stories');
 const storiesApiRoutes = require('./routes/stories-api');
 const contributionsRoutes = require('./routes/contributions');
 const contributionsApiRoutes = require('./routes/contributions-api');
+const votesApiRoutes = require('./routes/votes-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -55,6 +58,7 @@ app.use('/stories', storiesRoutes);
 app.use('/api/stories', storiesApiRoutes);
 app.use('/contributions', contributionsRoutes);
 app.use('/api/contributions', contributionsApiRoutes);
+app.use('/api/votes', votesApiRoutes);
 //Each one needs own folder in db
 
 // Home page

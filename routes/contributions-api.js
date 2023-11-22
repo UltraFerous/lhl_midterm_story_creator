@@ -4,7 +4,7 @@ const { addContribution } = require("../db/queries/contributions.js");
 const { loginCheck } = require('../helpers/loginCheck.js');
 
 
-// Create new database entry for new contribution, then redirect to story page
+// Create new contribution in contributions table, then redirect to story page
 router.post('/:id', (req, res) => {
   const id = req.params.id;
 
@@ -20,9 +20,6 @@ router.post('/:id', (req, res) => {
     }
     );
 });
-
-// Adjust vote count in database for contribution with matching id
-router.patch('/:id/like', (req, res) => { });
 
 // Accept contribution with matching id and incorporate it into the main story, then redirect to '/stories/:id'
 router.patch('/:id/accept', (req, res) => { });
