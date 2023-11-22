@@ -16,7 +16,10 @@ router.post('/register', (req, res) => {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(req.body.password, salt);
   createUser(req.body.email, req.body.name, hash)
-    .then(() => {
+    .then((newUser) => {
+      req.session.id = newUser.id;
+      req.session.name = newUser.name;
+      req.session.email = newUser.email;
       res.redirect('/');
     })
     .catch(error => {
