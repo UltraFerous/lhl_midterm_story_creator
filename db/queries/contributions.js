@@ -30,19 +30,4 @@ const contributionData = function(story) {
     });
 };
 
-const addContribution = function(userData, postData, storyID) {
-  let contribution = postData.newContribution;
-  let user = userData.id;
-  let input = [contribution, user, storyID];
-
-  return db
-    .query(`INSERT INTO contributions (body, author_id, story_id) VALUES ($1, $2, $3)`, input)
-    .then((result) => {
-      return
-    })
-    .catch((err) => {
-      console.log("ERROR:", err.message);
-    });
-};
-
-module.exports = { contributionData, addContribution };
+module.exports = { contributionData };

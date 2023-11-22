@@ -38,8 +38,9 @@
     <div class="contribution">
       <h1 class="contribution-body"> <%= contData[i].body %> </h1>
       <h1 class="contribution-author"> By <%= contData[i].name %> </h1>
+      <!-- Display Accept button if current user is story creator -->
       <% if (userData.id === storyData.user_id) { %>
-        <a href="#"><h1 class="contribution-accept"> Accept </h1></a>
+        <a href="#" class="accept-clicker" data-story-id="<%= storyData.id %>" data-contribution-body="<%= contData[i].body %>" data-contribution-id="<%= contData[i].id %>"><h1 class="contribution-accept"> Accept </h1></a>
       <% } %>
       <h1 class="contribution-accepted"> <%= contData[i].accepted %> </h1>
       <!-- Only display Like button if user is logged in -->
@@ -61,7 +62,31 @@
         const authorId = $(this).data('voter-id');
         likeContribution(contributionId, authorId);
       });
+
+      $('.accept-clicker').on('click', function(event) {
+        event.preventDefault();
+
+        const storyId = $(this).data('story-id');
+        const contributionId = $(this).data('contribution-id');
+        const contributionBody = $(this).data('contribution-body');
+
+        acceptContribution(storyId, contributionId, contributionBody);
+      });
     });
+
+    // click listener for accept button
+    // pass in story id, contribution id, contribution body
+    const acceptContribution = (storyId, contributionId, contributionBody) => {
+      $.ajax({
+        type: 'PATCH',
+        url: `/api/contributions/${contributionId}/accept`,
+        contentType: 'application/json',
+        data: JSON.stringify({ storyId, contributionId, contributionBody }),
+        error: function(error) {
+          console.log('Error:', error);
+        }
+      })
+    };
 
     const likeContribution = (contributionId, authorId) => {
       $.ajax({

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { addContribution } = require("../db/queries/contributions.js");
+const { addContribution, acceptContribution } = require("../db/queries/contributions-api.js");
 const { loginCheck } = require('../helpers/loginCheck.js');
 
 
@@ -22,6 +22,12 @@ router.post('/:id', (req, res) => {
 });
 
 // Accept contribution with matching id and incorporate it into the main story, then redirect to '/stories/:id'
-router.patch('/:id/accept', (req, res) => { });
+router.patch('/:id/accept', (req, res) => {
+  const { storyId, contributionId, contributionBody } = req.body;
+
+  acceptContribution(storyId, contributionId, contributionBody)
+    .then()
+    .catch(error => console.log('Error:', error.message));
+});
 
 module.exports = router;
