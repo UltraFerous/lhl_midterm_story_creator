@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { postNewStory } = require("../db/stories/stories");
+const { postNewStory } = require("../db/queries/stories");
 
 
 // Create new database entry for new story, and redirect to '/stories/:id'

@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { addContribution } = require("../db/stories/contributions");
+const { addContribution } = require("../db/queries/contributions.js");
 const { loginCheck } = require('../helpers/loginCheck.js');
 
 
 // Create new database entry for new contribution, then redirect to story page
 router.post('/:id', (req, res) => {
   const id = req.params.id;
-  
+
   loginCheck(req.session)
     .then(function(check) {
       if (check === true) {
