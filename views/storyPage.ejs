@@ -67,7 +67,7 @@
     <% }; %>
   </div>
   </main>
-  <!-- Click listener on Like button -->
+  <!-- Click listeners -->
   <script>
     $(document).ready(function() {
       $('.contribution-clicker').on('click', function(event) {
@@ -75,6 +75,7 @@
 
         const contributionId = $(this).data('contribution-id');
         const authorId = $(this).data('voter-id');
+
         likeContribution(contributionId, authorId);
       });
 
@@ -89,8 +90,7 @@
       });
     });
 
-    // click listener for accept button
-    // pass in story id, contribution id, contribution body
+    // Makes a PATCH request to /api/contributions/:contributionId/accept
     const acceptContribution = (storyId, contributionId, contributionBody) => {
       $.ajax({
         type: 'PATCH',
@@ -101,8 +101,16 @@
           console.log('Error:', error);
         }
       })
+      .done(() => {
+        console.log('acceptContribution done!');
+        window.location.reload();
+      })
+      .fail((jqXHR, textStatus, errorThrown) => {
+        console.log('Error:', errorThrown);
+      });
     };
 
+    // Makes a POST request to /api/votes/:contributionId/like
     const likeContribution = (contributionId, authorId) => {
       $.ajax({
         type: 'POST',

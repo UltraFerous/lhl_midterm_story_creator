@@ -18,23 +18,24 @@ const addContribution = function(userData, postData, storyID) {
 
 // Accept an individual contribution and add it to an existing story
 // Update the individual contribution in the contributions table so that it's accepted
-const acceptContribution = function(storyId, contributionId, contributionBody) {
+const acceptContribution = async function(storyId, contributionId, contributionBody) {
   // Use a SQL transaction to ensure both UPDATE queries complete
-  return db.query(`
+  const queryOne = await db.query(`
         UPDATE contributions
         SET accepted = true, Timestamp = CURRENT_TIMESTAMP
         WHERE id = $1
-      `, [contributionId])
-    .then(() => {
-      return db.query(`
+      `, [contributionId]);
+
+  const queryTwo = await db.query(`
       UPDATE stories
       SET body = CONCAT(body, E'\\n', E'\\n', $1::text)
       WHERE id = $2
     `, [contributionBody, storyId]);
-    })
-    .catch(error => {
-      console.log('Error:', error.message);
-    });
+    // .catch(error => {
+    //   console.log('Error:', error.message);
+    // });
+
+    return true;
 };
 
 module.exports = { addContribution, acceptContribution };

@@ -26,7 +26,14 @@ router.patch('/:id/accept', (req, res) => {
   const { storyId, contributionId, contributionBody } = req.body;
 
   acceptContribution(storyId, contributionId, contributionBody)
-    .then()
+  .then(() => {
+      const responseData = {
+        success: true,
+        message: 'Operation completed successfully',
+      };
+      res.json(responseData);
+      res.status(200).json(responseData);
+    })
     .catch(error => console.log('Error:', error.message));
 });
 
