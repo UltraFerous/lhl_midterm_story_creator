@@ -51,9 +51,9 @@ router.get('/:id', (req, res) => {
         userData: req.session
       };
       contributionData(id)
-        .then(function(contribtuionData) {
-          console.log(contribtuionData);
-          templateVars['contData'] = contribtuionData;
+        .then(function(contributionDataResult) {
+          console.log(contributionDataResult);
+          templateVars['contData'] = contributionDataResult;
           res.render('storyPage', templateVars);
         });
     });
