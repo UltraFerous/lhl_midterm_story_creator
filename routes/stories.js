@@ -44,6 +44,7 @@ router.get('/new', (req, res) => {
 // Render story page for story with matching id
 router.get('/:id', (req, res) => {
   const id = req.params.id;
+  console.log(id);
   getSingleStory(id)
     .then(function(storyData) {
       let templateVars = {
