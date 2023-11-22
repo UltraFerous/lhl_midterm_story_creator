@@ -10,8 +10,7 @@ router.post('/:id/like', (req, res) => {
   addVote(authorId, contributionId)
     .then()
     .catch(error => {
-      console.log('VOTE DELETED');
-      console.log('Error, DELETE:', error);
+      console.log('Error:', error);
     });
 });
 

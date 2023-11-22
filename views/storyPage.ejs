@@ -47,7 +47,7 @@
       <% if (userData.id) { %>
         <% let test = false; %>
         <% for (let k = 0; k < voteData.length; k++) { %>
-          <% if (voteData[k].contribution_id === i+1) { %>
+          <% if (voteData[k].contribution_id === contData[i].id) { %>
             <% test = true; %>
           <% }  %>
           <% } %>

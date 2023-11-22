@@ -34,6 +34,7 @@ router.get('/:id', (req, res) => {
       contributionData(id)
         .then(function(contributionDataResult) {
           templateVars['contData'] = contributionDataResult;
+          console.log(contributionDataResult);
           findVotes(req.session.id, id)
           .then(function(voteData) {
             templateVars['voteData'] = voteData;
