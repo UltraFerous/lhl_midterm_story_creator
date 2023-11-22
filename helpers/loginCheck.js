@@ -19,6 +19,3 @@ const loginCheck = function(cookieData) {
 };
 
 module.exports = { loginCheck };
-
-// req.session should be cookieData
-
