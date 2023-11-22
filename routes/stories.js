@@ -3,35 +3,7 @@ const router = express.Router();
 const { getAllStories, getSingleStory } = require("../db/stories/stories");
 const { loginCheck } = require('../helpers/loginCheck.js');
 const { contributionData } = require("../db/stories/contributions");
-
-
-const cleanData = function(data) {
-  let dataKeys = Object.keys(data);
-  const previewLength = 5;
-  let previewString = "";
-
-  for (let text of dataKeys) {
-    for (let i = 0; i < data[text].body.length && i < previewLength; i++) {
-      previewString += data[text].body[i];
-    }
-    data[text].body = previewString + "...";
-    previewString = "";
-  }
-  return data;
-};
-
-const openClose = function(data) {
-  let dataKeys = Object.keys(data);
-  for (let key of dataKeys) {
-    if (data[key].status === true) {
-      data[key].status = "Open";
-    }
-    else {
-      data[key].status = "Closed";
-    }
-  }
-  return data;
-};
+const { openClose,  cleanData } = require("../helpers/filters.js");
 
 // Render create new story page
 router.get('/new', (req, res) => {
@@ -47,9 +19,6 @@ router.get('/new', (req, res) => {
     }
     );
 });
-
-
-
 
 // Render story page for story with matching id
 router.get('/:id', (req, res) => {
