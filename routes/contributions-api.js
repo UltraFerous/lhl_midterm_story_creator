@@ -10,7 +10,6 @@ router.post('/:id', (req, res) => {
   
   loginCheck(req.session)
     .then(function(check) {
-      console.log("CHECK", check);
       if (check === true) {
         return addContribution(req.session, req.body, id)
           .then(function(data) {
