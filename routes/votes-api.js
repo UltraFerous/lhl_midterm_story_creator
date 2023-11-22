@@ -9,7 +9,13 @@ router.post('/:id/like', (req, res) => {
   const { authorId } = req.body;
 
   addVote(authorId, contributionId)
-    .then()
+    .then(() => {
+      const responseData = {
+        success: true,
+        message: 'Operation completed successfully',
+      };
+      res.json(responseData);
+    })
     .catch(error => {
       console.log('Error:', error);
     });

@@ -32,7 +32,6 @@ router.patch('/:id/accept', (req, res) => {
         message: 'Operation completed successfully',
       };
       res.json(responseData);
-      res.status(200).json(responseData);
     })
     .catch(error => console.log('Error:', error.message));
 });
