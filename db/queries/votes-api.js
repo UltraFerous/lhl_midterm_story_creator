@@ -1,5 +1,17 @@
 const { db } = require('../connection');
 
+const deleteVote = function(authorId, contributionId) {
+  return db
+    .query(`
+      DELETE  FROM votes 
+      WHERE author_id = $1
+      AND 
+      contribution_id = $2
+    `, [authorId, contributionId])
+    .then()
+    .catch(err => console.log("ERROR:", err.message));
+};
+
 const addVote = function(authorId, contributionId) {
   return db
     .query(`
@@ -7,7 +19,10 @@ const addVote = function(authorId, contributionId) {
       VALUES ($1, $2)
     `, [authorId, contributionId])
     .then()
-    .catch(err => console.log("ERROR:", err.message));
+    .catch(function(err){
+      console.log("ERROR:", err.message)
+      deleteVote(authorId, contributionId);
+    })
 };
 
 const findVotes = function(userID, storyID) {
@@ -36,4 +51,4 @@ const findVotes = function(userID, storyID) {
 
 
 
-module.exports = { addVote, findVotes };
+module.exports = { addVote, findVotes, deleteVote };
