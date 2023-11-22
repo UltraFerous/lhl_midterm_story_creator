@@ -45,7 +45,22 @@
       <h1 class="contribution-accepted"> <%= contData[i].accepted %> </h1>
       <!-- Only display Like button if user is logged in -->
       <% if (userData.id) { %>
-        <a href="#" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>"><h1 class="contribution-like">Like</h1></a>
+        <% let test = false; %>
+        <% for (let k = 0; k < voteData.length; k++) { %>
+          <% if (voteData[k].contribution_id === contData[i].id) { %>
+            <% test = true; %>
+          <% }  %>
+          <% } %>
+          <% if (test === true) { %>
+            <a href="" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>"><h1 class="contribution-like">
+              Liked
+              <% test = false; %>
+            </h1></a>
+            <% } else { %>
+            <a href="" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>"><h1 class="contribution-like">
+              Like
+            </h1></a>
+            <% } %>
       <% } %>
       <h1 class="contribution-votes"> Likes: <%= contData[i].vote_count %> </h1>
     </div>
