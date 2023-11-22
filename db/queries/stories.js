@@ -13,7 +13,18 @@ const getAllStories = function() {
 
 const getSingleStory = function(story) {
   return db
-    .query(`SELECT stories.id, stories.title, users.name, stories.body, stories.status FROM stories JOIN users ON author_id = users.id WHERE stories.id = $1`, [story])
+    .query(`
+      SELECT
+        stories.id,
+        stories.title,
+        users.id as user_id,
+        users.name,
+        stories.body,
+        stories.status
+      FROM stories
+      JOIN users ON author_id = users.id
+      WHERE stories.id = $1
+    `, [story])
     .then((result) => {
       return result.rows[0];
     })

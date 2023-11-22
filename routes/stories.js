@@ -29,6 +29,7 @@ router.get('/:id', (req, res) => {
         storyData: (storyData),
         userData: req.session
       };
+      console.log(storyData.body);
       contributionData(id)
         .then(function(contributionDataResult) {
           templateVars['contData'] = contributionDataResult;
