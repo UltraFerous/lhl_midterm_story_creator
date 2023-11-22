@@ -1,7 +1,7 @@
-const { pool } = require('../connection');
+const { db } = require('../connection');
 
 const getAllStories = function() {
-  return pool
+  return db
     .query(`SELECT stories.id, stories.title, users.name, stories.body, stories.status FROM stories JOIN users ON author_id = users.id`)
     .then((result) => {
       return result.rows;
@@ -12,7 +12,7 @@ const getAllStories = function() {
 };
 
 const getSingleStory = function(story) {
-  return pool
+  return db
     .query(`SELECT stories.id, stories.title, users.name, stories.body, stories.status FROM stories JOIN users ON author_id = users.id WHERE stories.id = $1`, [story])
     .then((result) => {
       return result.rows[0];
@@ -28,7 +28,7 @@ const postNewStory = function(userData, postData) {
   let user = userData.id;
   let input = [Title, Story, user];
 
-  return pool
+  return db
     .query(`INSERT INTO stories (title, body, author_id) VALUES ($1, $2, $3) RETURNING id;`, input)
     .then((result) => {
       return result.rows[0];
