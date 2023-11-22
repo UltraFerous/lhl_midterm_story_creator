@@ -31,7 +31,6 @@ router.get('/:id', (req, res) => {
       };
       contributionData(id)
         .then(function(contributionDataResult) {
-          console.log(contributionDataResult);
           templateVars['contData'] = contributionDataResult;
           res.render('storyPage', templateVars);
         });
