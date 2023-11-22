@@ -46,7 +46,6 @@ router.get('/', (req, res) => {
         storyData: openClose(cleanData(storyData)),
         userData: req.session
       };
-      console.log(req.session);
       res.render('index', templateVars);
     }
     );

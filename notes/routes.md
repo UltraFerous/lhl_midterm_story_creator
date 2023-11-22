@@ -78,6 +78,8 @@
     - users
       - id
       - username
+    - contributions
+      - count(*)
 
 ### '/api/contributions'
 

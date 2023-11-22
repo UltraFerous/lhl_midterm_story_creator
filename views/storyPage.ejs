@@ -20,7 +20,7 @@
 <body>
   <%- include('partials/_nav') %>
   <main>
-    <div class="story-overview"> 
+    <div class="story-overview">
     <h1 class="story-title"> <%= storyData.title %> </h1>
     <h1 class="story-author"> By <%= storyData.name %> </h1>
     <h1 class="story-body"> <%= storyData.body %> </h1>
@@ -39,6 +39,7 @@
       <h1 class="contribution-body"> <%= contData[i].body %> </h1>
       <h1 class="contribution-author"> By <%= contData[i].name %> </h1>
       <h1 class="contribution-accepted"> <%= contData[i].accepted %> </h1>
+      <h1 class="contribution-votes"> Likes: <%= contData[i].vote_count %> </h1>
     </div>
     <% }; %>
   </div>
