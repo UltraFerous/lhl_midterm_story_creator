@@ -38,6 +38,9 @@
     <div class="contribution">
       <h1 class="contribution-body"> <%= contData[i].body %> </h1>
       <h1 class="contribution-author"> By <%= contData[i].name %> </h1>
+      <% if (userData.id === storyData.user_id) { %>
+        <a href="#"><h1 class="contribution-accept"> Accept </h1></a>
+      <% } %>
       <h1 class="contribution-accepted"> <%= contData[i].accepted %> </h1>
       <!-- Only display Like button if user is logged in -->
       <% if (userData.id) { %>
