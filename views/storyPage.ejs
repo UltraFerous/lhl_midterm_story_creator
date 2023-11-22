@@ -97,12 +97,8 @@
         url: `/api/contributions/${contributionId}/accept`,
         contentType: 'application/json',
         data: JSON.stringify({ storyId, contributionId, contributionBody }),
-        error: function(error) {
-          console.log('Error:', error);
-        }
       })
       .done(() => {
-        console.log('acceptContribution done!');
         window.location.reload();
       })
       .fail((jqXHR, textStatus, errorThrown) => {
@@ -117,9 +113,12 @@
         url: `/api/votes/${contributionId}/like`,
         contentType: 'application/json',
         data: JSON.stringify({ contributionId, authorId }),
-        error: function(error) {
-          console.log('Error:', error);
-        }
+      })
+      .done(() => {
+        window.location.reload();
+      })
+      .fail((jqXHR, textStatus, errorThrown) => {
+        console.log('Error:', errorThrown);
       });
     }
   </script>
