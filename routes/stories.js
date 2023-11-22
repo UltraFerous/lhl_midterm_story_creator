@@ -35,11 +35,21 @@ const openClose = function(data) {
 
 // Render create new story page
 router.get('/new', (req, res) => {
-  const templateVars = {
-    userData: req.session
-  };
-  res.render('newStory', templateVars);
+  loginCheck(req.session)
+    .then(function(check) {
+      if (check === true) {
+        const templateVars = {
+          userData: req.session
+        };
+        res.render('newStory', templateVars);
+      }
+      return res.redirect(`/users/login`);
+    }
+    );
 });
+
+
+
 
 // Render story page for story with matching id
 router.get('/:id', (req, res) => {
@@ -72,9 +82,5 @@ router.get('/', (req, res) => {
     }
     );
 });
-
-
-
-
 
 module.exports = router;
