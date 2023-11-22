@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
   .then(function(data){
     newID = data.id;
     console.log(newID);
-    res.redirect(`/stories/${newID}`, );
+    res.redirect(`/stories/${newID}`);
   })
 });
 

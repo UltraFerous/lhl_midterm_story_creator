@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { getAllStories, getSingleStory } = require("../db/stories/stories");
 const { loginCheck } = require('../helpers/loginCheck.js');
+const { contributionData } = require("../db/stories/contributions");
+
 
 const cleanData = function(data) {
   let dataKeys = Object.keys(data);
@@ -44,11 +46,16 @@ router.get('/:id', (req, res) => {
   const id = req.params.id;
   getSingleStory(id)
     .then(function(storyData) {
-      const templateVars = {
+      let templateVars = {
         storyData: (storyData),
         userData: req.session
       };
-      res.render('storyPage', templateVars);
+      contributionData(id)
+        .then(function(contributionDataResult) {
+          console.log(contributionDataResult);
+          templateVars['contData'] = contributionDataResult;
+          res.render('storyPage', templateVars);
+        });
     });
 });
 
@@ -56,7 +63,6 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
   getAllStories()
     .then(function(storyData) {
-      console.log("LOG CHECK:", storyData);
       const templateVars = {
         storyData: openClose(cleanData(storyData)),
         userData: req.session

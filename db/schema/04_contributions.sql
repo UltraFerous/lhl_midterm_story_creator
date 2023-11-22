@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS contributions CASCADE;
 
 CREATE TABLE contributions (
   id SERIAL PRIMARY KEY NOT NULL,
-  body VARCHAR(255) NOT NULL,
+  body TEXT NOT NULL,
   author_id INTEGER,
   story_id INTEGER,
   Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
