@@ -39,6 +39,7 @@
       <h1 class="contribution-body"> <%= contData[i].body %> </h1>
       <h1 class="contribution-author"> By <%= contData[i].name %> </h1>
       <h1 class="contribution-accepted"> <%= contData[i].accepted %> </h1>
+      <!-- Only display Like button if user is logged in -->
       <% if (userData.id) { %>
         <a href="#" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>"><h1 class="contribution-like">Like</h1></a>
       <% } %>
