@@ -26,36 +26,46 @@ router.get('/new', (req, res) => {
 // Render story page for story with matching id
 router.get('/:id', (req, res) => {
   const id = req.params.id;
+  let templateVars = {};
 
   getSingleStory(id)
     .then(function(storyData) {
-      let templateVars = {
-        storyData: (storyData),
-        userData: req.session
+      // Render 404 error page if story id does not exist
+      if (storyData === undefined){
+        return res
+          .status(404)
+          .render('error', {
+            userData: null,
+            statusCode: 404,
+            errorMessage: `404: Story with ID ${id} not found.`
+          });
       };
+
+      templateVars.storyData = (storyData);
+      templateVars.userData = req.session;
       // Separate story body into paragraphs and store in an array
       templateVars.storyData.bodyParagraphs = paragraphFormatter(storyData.body);
 
-      if(storyData === undefined){
-        return res.send("ERROR 404: THIS STORY DOES NOT EXIST!")
-      };
-
-      contributionData(id)
-        .then(function(contributionDataResult) {
-          templateVars['contData'] = contributionDataResult;
-          // Separate contribution body into paragraphs and store in an array
-          if (templateVars.contData.length > 0) {
-            for (contributionIndex in templateVars.contData) {
-              templateVars.contData[contributionIndex].bodyParagraphs = paragraphFormatter(templateVars.contData[contributionIndex].body);
-            }
-          }
-          findVotes(req.session.id, id)
-            .then(function(voteData) {
-              templateVars['voteData'] = voteData;
-              res.render('storyPage', templateVars);
-            })
-        });
+      return contributionData(id);
     })
+    .then(function(contributionDataResult) {
+      templateVars['contData'] = contributionDataResult;
+      // Separate contribution body into paragraphs and store in an array
+      if (templateVars.contData.length > 0) {
+        for (contributionIndex in templateVars.contData) {
+          templateVars.contData[contributionIndex].bodyParagraphs = paragraphFormatter(templateVars.contData[contributionIndex].body);
+        }
+      }
+
+      return findVotes(req.session.id, id)
+    })
+    .then(function(voteData) {
+      templateVars['voteData'] = voteData;
+      res.render('storyPage', templateVars);
+    })
+    .catch(function(error) {
+      console.log('Error:', error);
+    });
 });
 
 // Redirect to index page '/'
