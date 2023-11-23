@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { getAllStories, getSingleStory } = require("../db/queries/stories.js");
+const { getAllStories, getSingleStory } = require('../db/queries/stories.js');
 const { loginCheck } = require('../helpers/loginCheck.js');
-const { contributionData } = require("../db/queries/contributions.js");
-const { findVotes } = require("../db/queries/votes-api.js");
-const { openClose, cleanData } = require("../helpers/filters.js");
+const { contributionData } = require('../db/queries/contributions.js');
+const { findVotes } = require('../db/queries/votes-api.js');
+const { openClose, cleanData } = require('../helpers/filters.js');
+const { paragraphFormatter } = require('../helpers/paragraphFormatter.js');
 
 // Render create new story page
 router.get('/new', (req, res) => {
@@ -15,8 +16,9 @@ router.get('/new', (req, res) => {
           userData: req.session
         };
         res.render('newStory', templateVars);
+      } else {
+        return res.redirect(`/users/login`);
       }
-      return res.redirect(`/users/login`);
     }
     );
 });
@@ -24,23 +26,32 @@ router.get('/new', (req, res) => {
 // Render story page for story with matching id
 router.get('/:id', (req, res) => {
   const id = req.params.id;
+
   getSingleStory(id)
     .then(function(storyData) {
       let templateVars = {
         storyData: (storyData),
         userData: req.session
       };
+      // Separate story body into paragraphs and store in an array
+      templateVars.storyData.bodyParagraphs = paragraphFormatter(storyData.body);
+
       if(storyData === undefined){
         return res.send("ERROR 404: THIS STORY DOES NOT EXIST!")
       };
+
       contributionData(id)
         .then(function(contributionDataResult) {
           templateVars['contData'] = contributionDataResult;
-          console.log(contributionDataResult);
+          // Separate contribution body into paragraphs and store in an array
+          if (templateVars.contData.length > 0) {
+            for (contributionIndex in templateVars.contData) {
+              templateVars.contData[contributionIndex].bodyParagraphs = paragraphFormatter(templateVars.contData[contributionIndex].body);
+            }
+          }
           findVotes(req.session.id, id)
             .then(function(voteData) {
               templateVars['voteData'] = voteData;
-              console.log(voteData);
               res.render('storyPage', templateVars);
             })
         });

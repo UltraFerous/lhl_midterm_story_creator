@@ -2,20 +2,21 @@ const { db } = require('../connection');
 
 const getAllStories = function() {
   return db
-    .query(`SELECT 
-    stories.id, 
-    stories.title, 
-    users.name, 
-    stories.body, 
-    stories.status 
-    FROM stories 
-    JOIN users ON author_id = users.id 
+    .query(`
+    SELECT
+      stories.id,
+      stories.title,
+      users.name,
+      stories.body,
+      stories.status
+    FROM stories
+    JOIN users ON author_id = users.id
     ORDER BY stories.id DESC`)
     .then((result) => {
       return result.rows;
     })
-    .catch((err) => {
-      console.log("ERROR:", err.message);
+    .catch((error) => {
+      console.log("ERROR:", error.message);
     });
 };
 
@@ -36,8 +37,8 @@ const getSingleStory = function(story) {
     .then((result) => {
       return result.rows[0];
     })
-    .catch((err) => {
-      console.log("ERROR:", err.message);
+    .catch((error) => {
+      console.log("ERROR:", error.message);
     });
 };
 
@@ -52,8 +53,8 @@ const postNewStory = function(userData, postData) {
     .then((result) => {
       return result.rows[0];
     })
-    .catch((err) => {
-      console.log("ERROR:", err.message);
+    .catch((error) => {
+      console.log("ERROR:", error.message);
     });
 };
 
@@ -70,8 +71,8 @@ const getSingleStoryFromContribution = function(contributionID) {
       console.log('RESULT', result.rows[0].id);
       return result.rows[0].id;
     })
-    .catch((err) => {
-      console.log("ERROR:", err.message);
+    .catch((error) => {
+      console.log("ERROR:", error.message);
     });
 };
 
