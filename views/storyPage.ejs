@@ -10,8 +10,12 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/storyPage.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/storyPage.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script src="/scripts/app.js"></script>
@@ -22,19 +26,21 @@
   <main>
     <div class="story-overview">
     <h1 class="story-title"> <%= storyData.title %> </h1>
-    <h2 class="story-author"> By <%= storyData.name %> </h2>
+    <p class="story-author"> By <%= storyData.name %> </p>
     <!-- Dynamically render story body separated into paragraphs -->
     <div class="story-content">
       <% for (const paragraph of storyData.bodyParagraphs) { %>
-        <h2 class="story-body"> <%= paragraph %> </h2>
+        <p class="story-body"> <%= paragraph %> </p>
       <% } %>
     </div>
     <!-- Render Complete button if story status is true AND logged in user is story creator -->
     <div class="complete-status">
     <% if (storyData.status && storyData.user_id === userData.id) { %>
-      <a href="#" class="complete-clicker" data-story-id="<%= storyData.id %>"><h1>Complete</h1></a>
+      <div class="complete-button">
+      <a href="#" class="complete-clicker" data-story-id="<%= storyData.id %>"><p>Complete</p></a>
+    </div>
     <% } %>
-    <h1 class="story-status"> Status: <%= storyData.status ? "Open" : "Closed" %> </h1>
+    <p class="story-status"> Status: <%= storyData.status ? "Open" : "Closed" %> </p>
   </div>
 </div>
   <!-- Render contribution box if story status is true -->
@@ -56,16 +62,16 @@
       <div class="contribution">
         <div class="contribution-content">
           <% for (const paragraph of contData[i].bodyParagraphs) { %>
-            <h1 class="contribution-body"> <%= paragraph %> </h1>
+            <p class="contribution-body"> <%= paragraph %> </p>
           <% } %>
         </div>
-        <h1 class="contribution-author"> By <%= contData[i].name %> </h1>
+        <p class="contribution-author"> By <%= contData[i].name %> </p>
         <!-- Display Accept button if current user is story creator -->
         <div class="contribution-footer">
         <% if (userData.id === storyData.user_id) { %>
           <a href="#" class="accept-clicker" data-story-id="<%= storyData.id %>" data-contribution-body="<%= contData[i].body %>" data-contribution-id="<%= contData[i].id %>"><h1 class="contribution-accept"> Accept </h1></a>
         <% } %>
-        <h1 class="contribution-accepted"> <%= contData[i].accepted %> </h1>
+        <p class="contribution-accepted"> <%= contData[i].accepted %> </p>
         <!-- Only display Like button if user is logged in -->
         <% if (userData.id) { %>
           <% let test = false; %>
@@ -80,12 +86,14 @@
                 <% test = false; %>
               </h1></a>
               <% } else { %>
+                <div class="like-button-count">
               <a href="" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>"><h1 class="contribution-like">
                 Like
               </h1></a>
               <% } %>
         <% } %>
         <h1 class="contribution-votes"> Likes: <%= contData[i].vote_count %> </h1>
+      </div>
       </div>
     <% } %>
   <% }; %>

@@ -11,13 +11,46 @@ body {
     padding-top: $nav-bar-height;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
+
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    h1 {
+      font-size: 26px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    p {
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
 
     section {
       display: flex;
       align-items: center;
       flex-direction: column;
       width: 100%;
+
+      .browse-stories{
+        margin-top: 37px;
+      }
 
       .new-story-button {
         margin-top: 37px;
@@ -26,6 +59,11 @@ body {
         background-color: $primary-colour;
         color: $background-colour;
         border: none;
+
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
       }
 
       .story-list {
@@ -38,12 +76,13 @@ body {
           width: 100%;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          border: solid;
+          justify-content: flex-start;
+          align-items: baseline;
+          border-bottom: solid;
           border-color: $primary-colour;
           margin-bottom: 5px;
 
-          .contribute-status{
+          .contribute-status {
             width: 95%;
             display: flex;
             flex-direction: row;
@@ -51,6 +90,10 @@ body {
             align-items: center;
 
             button{
+              padding: 5px;
+            }
+
+            button {
               background-color: $primary-colour;
               color: $background-colour;
               border: none;
