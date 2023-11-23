@@ -14,12 +14,13 @@ router.post('/', (req, res) => {
   postNewStory(req.session, req.body)
     .then(function(data) {
       newID = data.id;
-      console.log(newID);
       res.redirect(`/stories/${newID}`);
     });
 });
 
 // Mark story with matching id complete in database
-router.patch('/:id/complete', (req, res) => { });
+router.patch('/:id/complete', (req, res) => {
+
+});
 
 module.exports = router;
