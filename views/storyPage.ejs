@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/storyPage.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -22,30 +22,34 @@
   <main>
     <div class="story-overview">
     <h1 class="story-title"> <%= storyData.title %> </h1>
-    <h1 class="story-author"> By <%= storyData.name %> </h1>
+    <h2 class="story-author"> By <%= storyData.name %> </h2>
     <!-- Dynamically render story body separated into paragraphs -->
     <div class="story-content">
       <% for (const paragraph of storyData.bodyParagraphs) { %>
-        <h1 class="story-body"> <%= paragraph %> </h1>
+        <h2 class="story-body"> <%= paragraph %> </h2>
       <% } %>
     </div>
     <!-- Render Complete button if story status is true AND logged in user is story creator -->
+    <div class="complete-status">
     <% if (storyData.status && storyData.user_id === userData.id) { %>
       <a href="#" class="complete-clicker" data-story-id="<%= storyData.id %>"><h1>Complete</h1></a>
     <% } %>
     <h1 class="story-status"> Status: <%= storyData.status ? "Open" : "Closed" %> </h1>
   </div>
+</div>
   <!-- Render contribution box if story status is true -->
   <% if (storyData.status) { %>
     <div class="new-contribution">
-      Add a contribution contribution
+      <div class="contributions-title"> Add a contribution contribution </div>
       <form action="/api/contributions/<%= storyData.id %>" method="post">
         <textarea name="newContribution" id="newContribution" cols="30" rows="10" placeholder="Contribution"></textarea>
+        <div>
         <input type="submit" value="Submit">
+      </div>
     </div>
   <% } %>
   <div class="contributions">
-    Contributions
+  <div class="contributions-title"> Contributions </div>
   <% for (let i = 0; i < contData.length; i++) { %>
     <!-- Display a contribution only if it hasn't yet been accepted by story creator -->
     <% if (!contData[i].accepted) { %>
@@ -57,6 +61,7 @@
         </div>
         <h1 class="contribution-author"> By <%= contData[i].name %> </h1>
         <!-- Display Accept button if current user is story creator -->
+        <div class="contribution-footer">
         <% if (userData.id === storyData.user_id) { %>
           <a href="#" class="accept-clicker" data-story-id="<%= storyData.id %>" data-contribution-body="<%= contData[i].body %>" data-contribution-id="<%= contData[i].id %>"><h1 class="contribution-accept"> Accept </h1></a>
         <% } %>
@@ -85,6 +90,7 @@
     <% } %>
   <% }; %>
   </div>
+</div>
   </main>
 </body>
 </html>

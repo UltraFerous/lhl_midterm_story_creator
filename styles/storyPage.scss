@@ -1,0 +1,114 @@
+$primary-colour: #252525;
+$background-colour: #FBFBFB;
+$nav-bar-height: 62px;
+
+main {
+  padding-top: $nav-bar-height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  h2 {
+    font-size: 10px;
+  }
+
+  .complete-status {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      background-color: $primary-colour;
+      color: $background-colour;
+    }
+
+    h1 {
+      font-size: 10px;
+    }
+  }
+
+  .contributions-title {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .new-contribution {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      textarea {
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: 3px solid $primary-colour;
+        resize: none;
+        width: 309px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: $background-colour;
+      }
+      div{
+        display: flex;
+        justify-content: right;
+        width: 100%;
+
+      }
+
+      input {
+        background-color: $primary-colour;
+        color: $background-colour;
+        border: none;
+      }
+    }
+  }
+
+  .contributions{
+    .contribution{
+      .contribution-body{
+        font-size: 10px; 
+      }
+      .contribution-author{
+        font-size: 10px; 
+      }
+      .contribution-accepted{
+        font-size: 10px; 
+      }
+      .contribution-accept{
+        font-size: 10px;
+      }
+      .contribution-like{
+        font-size: 10px;
+      }
+      .contribution-votes{
+        font-size: 10px;
+      }
+      .contribution-footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: row;
+      }
+    }
+  }
+
+}
