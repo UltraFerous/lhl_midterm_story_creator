@@ -28,22 +28,24 @@
     </section>
     <section>
       <h1>Browse stories</h1>
-      <!-- programmatically insert story preview divs here -->
+      <!-- Programmatically insert story preview divs here -->
       <article class="story-list">
         <% for (let i = 0; i < storyData.length; i++) { %>
-          <a href="/stories/<%= storyData[i].id %>">
-          <div class="story-overview"> 
-            <h1 class="story-overview-title"> <%= storyData[i].title %> </h1>
+          <div class="story-overview">
+            <a href="/stories/<%= storyData[i].id %>">
+              <h1 class="story-overview-title"> <%= storyData[i].title %> </h1>
+            </a>
             <h2 class="story-overview-author"> <%= storyData[i].name %> </h2>
             <h2 class="story-overview-preview"> <%= storyData[i].body %> </h2>
-            
-            <a href="/stories/<%= storyData[i].id %>">
-              <button>Contribute</button>
-            </a>
-          <h3 class="story-overview-status"> <%= storyData[i].status %> </h3>
+            <!-- Render contribute button if story status is Open -->
+            <% if (storyData[i].status === "Open") { %>
+              <a href="/stories/<%= storyData[i].id %>">
+                <button>Contribute</button>
+              </a>
+            <% } %>
+            <h3 class="story-overview-status">Status: <%= storyData[i].status ? "Open" : "Closed" %> </h3>
           </div>
-        </a>
-       <% }; %>
+       <% } %>
       </article>
     </section>
   </main>

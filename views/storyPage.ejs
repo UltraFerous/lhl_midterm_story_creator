@@ -24,21 +24,25 @@
     <h1 class="story-title"> <%= storyData.title %> </h1>
     <h1 class="story-author"> By <%= storyData.name %> </h1>
     <h1 class="story-body"> <%= storyData.body %> </h1>
+    <!-- Render Complete button if story status is true AND logged in user is story creator -->
     <% if (storyData.status && storyData.user_id === userData.id) { %>
       <a href="#" class="complete-clicker" data-story-id="<%= storyData.id %>"><h1>Complete</h1></a>
     <% } %>
     <h1 class="story-status"> Status: <%= storyData.status ? "Open" : "Closed" %> </h1>
   </div>
-  <div class="new-contribution">
-    Add a contribution contribution
-    <form action="/api/contributions/<%= storyData.id %>" method="post">
-      <input type="text" id="newContribution" name="newContribution" placeholder="Your addition..."><br>
-      <input type="submit" value="Submit">
-  </div>
+  <!-- Render contribution box if story status is true -->
+  <% if (storyData.status) { %>
+    <div class="new-contribution">
+      Add a contribution contribution
+      <form action="/api/contributions/<%= storyData.id %>" method="post">
+        <input type="text" id="newContribution" name="newContribution" placeholder="Your addition..."><br>
+        <input type="submit" value="Submit">
+    </div>
+  <% } %>
   <div class="contributions">
     Contributions
   <% for (let i = 0; i < contData.length; i++) { %>
-    <!-- Only display a contribution if it hasn't been accepted by story creator -->
+    <!-- Display a contribution only if it hasn't yet been accepted by story creator -->
     <% if (!contData[i].accepted) { %>
       <div class="contribution">
         <h1 class="contribution-body"> <%= contData[i].body %> </h1>
