@@ -4,7 +4,7 @@ const { getAllStories, getSingleStory } = require("../db/queries/stories.js");
 const { loginCheck } = require('../helpers/loginCheck.js');
 const { contributionData } = require("../db/queries/contributions.js");
 const { findVotes } = require("../db/queries/votes-api.js");
-const { openClose,  cleanData } = require("../helpers/filters.js");
+const { openClose, cleanData } = require("../helpers/filters.js");
 
 // Render create new story page
 router.get('/new', (req, res) => {
@@ -30,18 +30,21 @@ router.get('/:id', (req, res) => {
         storyData: (storyData),
         userData: req.session
       };
+      if(storyData === undefined){
+        return res.send("ERROR 404: THIS STORY DOES NOT EXIST!")
+      };
       contributionData(id)
         .then(function(contributionDataResult) {
           templateVars['contData'] = contributionDataResult;
           console.log(contributionDataResult);
           findVotes(req.session.id, id)
-          .then(function(voteData) {
-            templateVars['voteData'] = voteData;
-            console.log(voteData);
-            res.render('storyPage', templateVars);
-          })
+            .then(function(voteData) {
+              templateVars['voteData'] = voteData;
+              console.log(voteData);
+              res.render('storyPage', templateVars);
+            })
         });
-    });
+    })
 });
 
 // Redirect to index page '/'
