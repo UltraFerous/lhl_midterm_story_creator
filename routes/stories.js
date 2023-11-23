@@ -43,7 +43,12 @@ router.get('/:id', (req, res) => {
       contributionData(id)
         .then(function(contributionDataResult) {
           templateVars['contData'] = contributionDataResult;
-          console.log(templateVars);
+          // Separate contribution body into paragraphs and store in an array
+          if (templateVars.contData.length > 0) {
+            for (contributionIndex in templateVars.contData) {
+              templateVars.contData[contributionIndex].bodyParagraphs = paragraphFormatter(templateVars.contData[contributionIndex].body);
+            }
+          }
           findVotes(req.session.id, id)
             .then(function(voteData) {
               templateVars['voteData'] = voteData;
