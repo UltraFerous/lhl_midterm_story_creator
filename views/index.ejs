@@ -21,9 +21,9 @@
   <%- include('partials/_nav'); %>
   <main>
     <section>
-      <a href="/stories/new">
-        <button>Start a new story.</button>
-      </a>
+      <form action="/stories/new" method="GET">
+        <button class="new-story-button" type="submit">Start a new story.</button>
+      </form>
       <p>Collaborate with others to craft tales of swashbuckling adventure, fiery romance, or gut-busting comedy. The sky’s the limit.</p>
     </section>
     <section>

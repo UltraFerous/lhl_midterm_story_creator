@@ -1,6 +1,24 @@
 // See: https://sass-lang.com/
 
-body,
-html {
-  margin: 0;
+$font-stack: "Times New Roman", Times, serif;
+$primary-colour: #252525;
+$background-colour: #FBFBFB;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-colour;
+  background-color: $background-colour;
+
+  $a-tags: 'a, a:active, a:hover, a:visited';
+  $a-tags-hover: 'a:active, a:hover';
+
+  #{$a-tags} {
+    color: $primary-colour;
+    text-decoration: none;
+  }
+
+  #{$a-tags-hover} {
+    color: $primary-colour;
+  }
 }
+
