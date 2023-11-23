@@ -1,6 +1,5 @@
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
-$nav-bar-height: 62px;
 
 body {
   margin: 0;
@@ -28,8 +27,25 @@ body {
         border: none;
       }
 
-      .story-overview {
+      .story-list {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .story-overview {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: solid;
+          border-color: $primary-colour;
+          margin-bottom: 5px;
+
+          .story-overview-preview {
+            text-align: center;
+          }
+        }
       }
     }
   }

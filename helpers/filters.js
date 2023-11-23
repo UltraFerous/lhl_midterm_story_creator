@@ -1,6 +1,6 @@
 const cleanData = function(data) {
   let dataKeys = Object.keys(data);
-  const previewLength = 5;
+  const previewLength = 150;
   let previewString = "";
 
   for (let text of dataKeys) {

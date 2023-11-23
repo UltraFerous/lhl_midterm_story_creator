@@ -1,0 +1,17 @@
+$nav-bar-height: 62px;
+$primary-colour: #252525;
+
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 52px + $nav-bar-height;
+
+  input{
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom:3px solid $primary-colour;
+  }
+}
