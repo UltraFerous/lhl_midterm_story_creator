@@ -1,5 +1,13 @@
 // Client facing scripts here
 $(document).ready(function() {
+  $('.complete-clicker').on('click', function(event) {
+    event.preventDefault();
+
+    const storyId = $(this).data('story-id');
+
+    completeStory(storyId);
+  })
+
   $('.contribution-clicker').on('click', function(event) {
     event.preventDefault();
 
@@ -20,7 +28,23 @@ $(document).ready(function() {
   });
 });
 
-// Makes a POST request to /api/votes/:contributionId/like
+// Make a PATCH request to /api/stories/:id/complete to mark a story as complete
+const completeStory = (storyId) => {
+  $.ajax({
+    type: 'PATCH',
+    url: `/api/stories/${storyId}/complete`,
+    contentType: 'application/json',
+    data: JSON.stringify({ storyId }),
+  })
+  .done(() => {
+    window.location.reload();
+  })
+  .fail((jqXHR, textStatus, errorThrown) => {
+    console.log('Error:', errorThrown);
+  });
+};
+
+// Make a POST request to /api/votes/:contributionId/like
 const likeContribution = (contributionId, authorId) => {
   $.ajax({
     type: 'POST',
@@ -36,7 +60,7 @@ const likeContribution = (contributionId, authorId) => {
   });
 };
 
-// Makes a PATCH request to /api/contributions/:contributionId/accept
+// Make a PATCH request to /api/contributions/:contributionId/accept
 const acceptContribution = (storyId, contributionId, contributionBody) => {
   $.ajax({
     type: 'PATCH',
