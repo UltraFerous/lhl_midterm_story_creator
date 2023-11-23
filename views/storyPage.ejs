@@ -23,7 +23,12 @@
     <div class="story-overview">
     <h1 class="story-title"> <%= storyData.title %> </h1>
     <h1 class="story-author"> By <%= storyData.name %> </h1>
-    <h1 class="story-body"> <%= storyData.body %> </h1>
+    <!-- Dynamically render story body separated into paragraphs -->
+    <div class="story-content">
+      <% for (const paragraph of storyData.bodyParagraphs) { %>
+        <h1 class="story-body"> <%= paragraph %> </h1>
+      <% } %>
+    </div>
     <!-- Render Complete button if story status is true AND logged in user is story creator -->
     <% if (storyData.status && storyData.user_id === userData.id) { %>
       <a href="#" class="complete-clicker" data-story-id="<%= storyData.id %>"><h1>Complete</h1></a>
@@ -35,7 +40,7 @@
     <div class="new-contribution">
       Add a contribution contribution
       <form action="/api/contributions/<%= storyData.id %>" method="post">
-        <input type="text" id="newContribution" name="newContribution" placeholder="Your addition..."><br>
+        <textarea name="newContribution" id="newContribution" cols="30" rows="10" placeholder="Contribution"></textarea>
         <input type="submit" value="Submit">
     </div>
   <% } %>

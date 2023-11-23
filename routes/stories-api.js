@@ -21,7 +21,6 @@ router.post('/', (req, res) => {
 
 // Mark story with matching id complete in database
 router.patch('/:id/complete', (req, res) => {
-<<<<<<< HEAD
   const { id } = req.params;
 
   completeStory(id)
@@ -35,9 +34,6 @@ router.patch('/:id/complete', (req, res) => {
   .catch(error => {
     console.log('Error:', error);
   });
-=======
-  
->>>>>>> 7998e44b9bfbbc3991c7c435ad50a6c181ff9019
 });
 
 module.exports = router;
