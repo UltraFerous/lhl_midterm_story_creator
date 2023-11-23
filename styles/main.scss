@@ -1,3 +1,36 @@
+$primary-colour: #252525;
+$background-colour: #FBFBFB;
+$nav-bar-height: 62px;
+
 body {
   margin: 0;
+  display: flex;
+  justify-content: center;
+
+  main {
+    padding-top: $nav-bar-height;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    section {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+
+      .new-story-button {
+        margin-top: 37px;
+        height: 56px;
+        width: 255px;
+        background-color: $primary-colour;
+        color: $background-colour;
+        border: none;
+      }
+
+      .story-overview {
+        width: 100%;
+      }
+    }
+  }
 }
