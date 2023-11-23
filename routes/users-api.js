@@ -37,12 +37,11 @@ router.post('/login', (req, res) => {
         req.session.email = response[0].email;
         res.redirect('/');
       } else {
-        // stretch goal: create error message box to display bad password
-        console.log('Passwords dont match!');
+        res.render('login', {userData: null, errorMessage: 'Wrong password. Please try again.'});
       }
     })
-    .catch(error => {
-      console.log(error);
+    .catch(() => {
+      res.render('login', {userData: null, errorMessage: 'Wrong email address. Please try again.'});
     });
 });
 
