@@ -21,14 +21,15 @@
   <main>
     <h1>The Story Begins...</h1>
     <form action="/api/stories/" method="post">
-      <input type="text" id="newTitle" name="newTitle" placeholder="Title">
-      <textarea name="newBody" id="newBody" cols="30" rows="10" placeholder="Story"></textarea>
+      <input type="text" id="newTitle" name="newTitle" placeholder="Title" class="text-areas">
+      <textarea name="newBody" id="newBody" cols="30" rows="10" placeholder="Story" class="text-areas"></textarea>
+      <div>
       <input type="submit" value="Submit">
     </form>
     <form action="/stories/" method="get">
       <input type="submit" value="Cancel">
     </form>
+  </div>
   </main>
 </body>
-
 </html>

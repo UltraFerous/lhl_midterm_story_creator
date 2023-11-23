@@ -38,6 +38,7 @@
             <h2 class="story-overview-author"> By <%= storyData[i].name %> </h2>
             <h2 class="story-overview-preview"> <%= storyData[i].body %> </h2>
             <!-- Render contribute button if story status is Open -->
+            <div class="contribute-status">
             <% if (storyData[i].status === "Open") { %>
               <a href="/stories/<%= storyData[i].id %>">
                 <button>Contribute</button>
@@ -45,6 +46,7 @@
             <% } %>
             <h3 class="story-overview-status">Status: <%= storyData[i].status %> </h3>
           </div>
+        </div>
        <% } %>
       </article>
     </section>

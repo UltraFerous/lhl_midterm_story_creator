@@ -1,17 +1,40 @@
 $nav-bar-height: 62px;
 $primary-colour: #252525;
+$background-colour: #FBFBFB;
+
 
 
 main {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding-top: 52px + $nav-bar-height;
 
-  input{
+  .text-areas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-left: none;
     border-right: none;
     border-top: none;
     border-bottom:3px solid $primary-colour;
+    resize: none;
+    width: 309px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: $background-colour;
+  }
+
+  div{
+    display: flex;
+    justify-content: right;
+
+    input{
+      background-color: $primary-colour;
+      color: $background-colour;
+      border: none;
+      margin-left: 5px;
+    }
   }
 }

@@ -1,5 +1,6 @@
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
+$nav-bar-height: 62px;
 
 body {
   margin: 0;
@@ -41,6 +42,20 @@ body {
           border: solid;
           border-color: $primary-colour;
           margin-bottom: 5px;
+
+          .contribute-status{
+            width: 95%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            button{
+              background-color: $primary-colour;
+              color: $background-colour;
+              border: none;
+            }
+          }
 
           .story-overview-preview {
             text-align: center;
