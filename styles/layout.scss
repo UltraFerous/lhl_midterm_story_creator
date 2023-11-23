@@ -1,6 +1,6 @@
 // See: https://sass-lang.com/
 
-$font-stack: "Times New Roman", Times, serif;
+$font-stack: 'Libre Baskerville', serif;
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
 
@@ -20,5 +20,18 @@ body {
   #{$a-tags-hover} {
     color: $primary-colour;
   }
-}
 
+  h1 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  p {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

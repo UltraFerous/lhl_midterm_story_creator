@@ -1,0 +1,174 @@
+$primary-colour: #252525;
+$background-colour: #FBFBFB;
+$nav-bar-height: 62px;
+
+
+body{
+  display: flex;
+  justify-content: center;
+
+}
+main {
+  padding-top: $nav-bar-height;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  h2 {
+    font-size: 10px;
+  }
+
+  .complete-status{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .complete-button{
+      a{
+        p{
+          padding: 3px;
+          color: $background-colour;
+          background-color: $primary-colour;
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  .contributions-title {
+    margin-top: 5px;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .new-contribution {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+    flex-direction: column;
+    margin-top: 24px;
+
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      textarea {
+        display: flex;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+
+        border-bottom: 3px solid $primary-colour;
+        resize: none;
+        width: 309px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: $background-colour;
+      }
+
+      div {
+        display: flex;
+        justify-content: right;
+        width: 100%;
+
+      }
+
+      input {
+        background-color: $primary-colour;
+        color: $background-colour;
+        border: none;
+      }
+    }
+  }
+
+  .contributions {
+    width: 100%;
+    margin-top: 24px;
+    .contribution {
+      border-bottom: 3px solid $primary-colour;
+      .like-button-count{
+        display: flex;
+      }
+
+      .contribution-body {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .contribution-author {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .contribution-accepted {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $background-colour;
+      }
+
+      .contribution-accept {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 3px;
+
+
+        background-color: $primary-colour;
+        color: $background-colour;
+        border: none;
+      }
+
+      .contribution-like {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 3px;
+
+        background-color: $primary-colour;
+        color: $background-colour;
+        border: none;
+      }
+
+      .contribution-votes {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-left: 10px;
+      }
+
+      .contribution-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: row;
+
+        .like-button-count{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+}

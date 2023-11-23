@@ -8,10 +8,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/newStory.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
   <script src="/vendor/jquery-3.0.0.js"></script>
 </head>
@@ -21,14 +25,15 @@
   <main>
     <h1>The Story Begins...</h1>
     <form action="/api/stories/" method="post">
-      <input type="text" id="newTitle" name="newTitle" placeholder="Title">
-      <textarea name="newBody" id="newBody" cols="30" rows="10" placeholder="Story"></textarea>
+      <input type="text" id="newTitle" name="newTitle" placeholder="Title" class="text-areas">
+      <textarea name="newBody" id="newBody" cols="30" rows="10" placeholder="Story" class="text-areas"></textarea>
+      <div>
       <input type="submit" value="Submit">
     </form>
     <form action="/stories/" method="get">
       <input type="submit" value="Cancel">
     </form>
+  </div>
   </main>
 </body>
-
 </html>
