@@ -20,7 +20,8 @@ const contributionData = function(story) {
       contributions.id,
       contributions.body,
       contributions.accepted,
-      users.name;
+      users.name
+      ORDER BY contributions.id DESC
     `, [story])
     .then((result) => {
       return result.rows;

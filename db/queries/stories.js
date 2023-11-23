@@ -2,7 +2,15 @@ const { db } = require('../connection');
 
 const getAllStories = function() {
   return db
-    .query(`SELECT stories.id, stories.title, users.name, stories.body, stories.status FROM stories JOIN users ON author_id = users.id`)
+    .query(`SELECT 
+    stories.id, 
+    stories.title, 
+    users.name, 
+    stories.body, 
+    stories.status 
+    FROM stories 
+    JOIN users ON author_id = users.id 
+    ORDER BY stories.id DESC`)
     .then((result) => {
       return result.rows;
     })
