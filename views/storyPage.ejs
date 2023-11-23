@@ -25,6 +25,11 @@
     <h1 class="story-author"> By <%= storyData.name %> </h1>
     <h1 class="story-body"> <%= storyData.body %> </h1>
     <h1 class="story-status"> <%= storyData.status %> </h1>
+    <% if (storyData.status) { %>
+      <a href="#"><h1>Complete</h1></a>
+    <% } else { %>
+      <h1>Completed</h1>
+    <% } %>
   </div>
   <div class="new-contribution">
     Add a contribution contribution
