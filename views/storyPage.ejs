@@ -50,7 +50,11 @@
     <!-- Display a contribution only if it hasn't yet been accepted by story creator -->
     <% if (!contData[i].accepted) { %>
       <div class="contribution">
-        <h1 class="contribution-body"> <%= contData[i].body %> </h1>
+        <div class="contribution-content">
+          <% for (const paragraph of contData[i].bodyParagraphs) { %>
+            <h1 class="contribution-body"> <%= paragraph %> </h1>
+          <% } %>
+        </div>
         <h1 class="contribution-author"> By <%= contData[i].name %> </h1>
         <!-- Display Accept button if current user is story creator -->
         <% if (userData.id === storyData.user_id) { %>
