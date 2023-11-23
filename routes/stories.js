@@ -16,8 +16,9 @@ router.get('/new', (req, res) => {
           userData: req.session
         };
         res.render('newStory', templateVars);
+      } else {
+        return res.redirect(`/users/login`);
       }
-      return res.redirect(`/users/login`);
     }
     );
 });
