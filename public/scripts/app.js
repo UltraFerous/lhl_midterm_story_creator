@@ -1,4 +1,5 @@
 // Client facing scripts here
+
 $(document).ready(function() {
   $('.complete-clicker').on('click', function(event) {
     event.preventDefault();
