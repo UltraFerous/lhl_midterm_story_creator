@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 
 // Mark story with matching id complete in database
 router.patch('/:id/complete', (req, res) => {
-
+  
 });
 
 module.exports = router;
