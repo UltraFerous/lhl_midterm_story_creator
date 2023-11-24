@@ -23,7 +23,7 @@ router.post('/register', (req, res) => {
       res.redirect('/');
     })
     .catch(error => {
-      console.log(error);
+      console.log('Registration error:', error);
     });
 });
 

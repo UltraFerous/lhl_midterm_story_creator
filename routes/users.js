@@ -15,7 +15,7 @@ router.get('/register', (req, res) => {
 
 // Render login page
 router.get('/login', (req, res) => {
-  res.render('login', {userData: req.session});
+  res.render('login', {userData: req.session, errorMessage: null});
 });
 
 module.exports = router;
