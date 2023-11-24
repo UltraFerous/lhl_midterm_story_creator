@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
         return res
           .status(404)
           .render('error', {
-            userData: null,
+            userData: req.session || null,
             statusCode: 404,
             errorMessage: `404: Story with ID ${id} not found.`
           });
