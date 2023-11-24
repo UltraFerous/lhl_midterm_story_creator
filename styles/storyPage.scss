@@ -15,6 +15,13 @@ main {
   justify-content: center;
   flex-direction: column;
 
+  .story-author {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
   h1 {
     font-size: 26px;
     font-style: normal;
@@ -103,7 +110,6 @@ main {
     margin-top: 24px;
     margin-bottom: 24px;
     .contribution {
-      border-bottom: 3px solid $primary-colour;
       .like-button-count{
         display: flex;
       }
@@ -116,9 +122,9 @@ main {
       }
 
       .contribution-author {
-        font-size: 10px;
+        font-size: 16px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 700;
         line-height: normal;
       }
 
@@ -167,6 +173,7 @@ main {
         display: flex;
         justify-content: space-between;
         align-items: row;
+        border-bottom: 3px solid $primary-colour;
 
         .like-button-count{
           display: flex;
