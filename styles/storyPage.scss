@@ -76,6 +76,11 @@ main {
         margin-top: 10px;
         margin-bottom: 10px;
         background-color: $background-colour;
+
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
       }
 
       div {
@@ -96,6 +101,7 @@ main {
   .contributions {
     width: 100%;
     margin-top: 24px;
+    margin-bottom: 24px;
     .contribution {
       border-bottom: 3px solid $primary-colour;
       .like-button-count{
@@ -171,4 +177,13 @@ main {
     }
   }
 
+}
+
+$breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+  body {
+    main {
+      width: 75%;
+    }
+  }
 }
