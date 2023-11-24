@@ -48,7 +48,7 @@
     <div class="new-contribution">
       <div class="contributions-title"> Add a Contribution </div>
       <form action="/api/contributions/<%= storyData.id %>" method="post">
-        <textarea name="newContribution" id="newContribution" cols="30" rows="10" placeholder="Contribution"></textarea>
+        <textarea name="newContribution" id="newContribution" cols="30" rows="10" placeholder="Contribution" required></textarea>
         <div>
         <input type="submit" value="Submit">
       </div>
