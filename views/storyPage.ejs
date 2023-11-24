@@ -44,7 +44,7 @@
   </div>
 </div>
   <!-- Render contribution box if story status is true -->
-  <% if (storyData.status) { %>
+  <% if (storyData.status && userData.id) { %>
     <div class="new-contribution">
       <div class="contributions-title"> Add a Contribution </div>
       <form action="/api/contributions/<%= storyData.id %>" method="post">
