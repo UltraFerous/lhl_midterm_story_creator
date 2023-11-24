@@ -1,40 +1,81 @@
-$nav-bar-height: 62px;
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
+$textbox-colour: #E6E6E6;
 
+$nav-bar-height: 62px;
+$margin-top-first: 50px;
 
+$font-size-header: 26px;
+$font-size-subheader: 18px;
+$font-size-body: 14px;
+
+$font-weight-bold: 700;
+$font-weight-regular: 400;
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
 
 main {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 52px + $nav-bar-height;
+  padding-top: $nav-bar-height;
+  width: 85%;
 
-  .text-areas{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    border-bottom:3px solid $primary-colour;
-    resize: none;
-    width: 309px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: $background-colour;
+  h1 {
+    margin: $margin-top-first 0 20px 0;
   }
 
-  div{
-    display: flex;
-    justify-content: right;
+  form {
+    width: 100%;
 
-    input{
-      background-color: $primary-colour;
-      color: $background-colour;
+    .text-areas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      resize: none;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: $textbox-colour;
       border: none;
-      margin-left: 5px;
+      padding: 8px;
+      font-size: $font-size-body;
+    }
+
+    div {
+      display: flex;
+      justify-content: right;
+      margin-top: 20px;
+
+      input {
+        background-color: $primary-colour;
+        color: $background-colour;
+        border: none;
+        margin-left: 5px;
+        padding: 8px;
+        font-size: $font-size-body;
+        cursor: pointer;
+      }
+
+      input:hover {
+        background-color: $background-colour;
+        border: 1px solid $primary-colour;
+        color: $primary-colour;
+      }
+    }
+  }
+}
+
+$breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+  body {
+    main {
+      width: 60%;
     }
   }
 }

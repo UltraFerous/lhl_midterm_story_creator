@@ -43,7 +43,7 @@
             <p class="story-overview-preview"> <%= storyData[i].body %> </p>
             <!-- Render contribute button if story status is Open -->
             <div class="contribute-status">
-            <% if (storyData[i].status === "Open") { %>
+            <% if (storyData[i].status === "Open" && userData.id) { %>
               <a href="/stories/<%= storyData[i].id %>">
                 <button>Contribute</button>
               </a>

@@ -1,8 +1,13 @@
-// See: https://sass-lang.com/
-
 $font-stack: 'Libre Baskerville', serif;
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
+
+$font-size-header: 26px;
+$font-size-subheader: 18px;
+$font-size-body: 14px;
+
+$font-weight-bold: 700;
+$font-weight-regular: 400;
 
 body {
   font: 100% $font-stack;
@@ -19,19 +24,20 @@ body {
 
   #{$a-tags-hover} {
     color: $primary-colour;
+    text-decoration: underline;
   }
 
   h1 {
-    font-size: 26px;
+    font-size: $font-size-header;
     font-style: normal;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     line-height: normal;
   }
 
   p {
-    font-size: 10px;
+    font-size: $font-size-body;
     font-style: normal;
-    font-weight: 400;
+    font-weight: $font-weight-regular;
     line-height: normal;
   }
 }

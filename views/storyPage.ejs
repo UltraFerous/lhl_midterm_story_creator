@@ -50,7 +50,7 @@
       <form action="/api/contributions/<%= storyData.id %>" method="post">
         <textarea name="newContribution" id="newContribution" cols="30" rows="10" placeholder="Contribution" required></textarea>
         <div>
-        <input type="submit" value="Submit">
+        <button type="submit" value="Submit">Submit</button>
       </div>
     </div>
   <% } %>
@@ -60,7 +60,7 @@
     <!-- Display a contribution only if it hasn't yet been accepted by story creator -->
     <% if (!contData[i].accepted) { %>
       <div class="contribution">
-        <p class="contribution-author"> By <%= contData[i].name %> </p>
+        <p class="contribution-author"> <%= contData[i].name %> </p>
         <div class="contribution-content">
           <% for (const paragraph of contData[i].bodyParagraphs) { %>
             <p class="contribution-body"> <%= paragraph %> </p>
@@ -69,7 +69,9 @@
         <!-- Display Accept button if current user is story creator and story is still Open -->
         <div class="contribution-footer">
         <% if (userData.id === storyData.user_id && storyData.status) { %>
-          <a href="#" class="accept-clicker" data-story-id="<%= storyData.id %>" data-contribution-body="<%= contData[i].body %>" data-contribution-id="<%= contData[i].id %>"><h1 class="contribution-accept"> Accept </h1></a>
+          <a href="#" class="accept-clicker" data-story-id="<%= storyData.id %>" data-contribution-body="<%= contData[i].body %>" data-contribution-id="<%= contData[i].id %>">
+            <h1 class="contribution-accept"> Accept </h1>
+          </a>
         <% } %>
         <p class="contribution-accepted"> <%= contData[i].accepted %> </p>
         <!-- Only display Like button if user is logged in -->
@@ -79,25 +81,24 @@
             <% if (voteData[k].contribution_id === contData[i].id) { %>
               <% test = true; %>
             <% }  %>
-            <% } %>
+          <% } %>
             <div class="like-button-count">
             <% if (test === true) { %>
-              <a href="" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>"><h1 class="contribution-like">
-                Liked
-                <% test = false; %>
-              </h1></a>
+              <a href="" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>">
+                <p class="contribution-like">Liked<% test = false; %></p>
+              </a>
               <% } else { %>
-              <a href="" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>"><h1 class="contribution-like">
-                Like
-              </h1></a>
+                <a href="" class="contribution-clicker" data-contribution-id="<%= contData[i].id %>" data-voter-id="<%= userData.id %>">
+                  <h1 class="contribution-like">Like</h1>
+                </a>
               <% } %>
+              <p class="contribution-votes"> Likes: <%= contData[i].vote_count %> </p>
+            </div>
         <% } %>
-        <h1 class="contribution-votes"> Likes: <%= contData[i].vote_count %> </h1>
-      </div>
+        </div>
       </div>
     <% } %>
-  <% }; %>
-  </div>
+  <% } %>
 </div>
   </main>
 </body>

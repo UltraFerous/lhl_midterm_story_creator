@@ -1,57 +1,89 @@
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
+$textbox-colour: #E6E6E6;
+
 $nav-bar-height: 62px;
+$margin-top-first: 50px;
 
+$font-size-header: 26px;
+$font-size-subheader: 18px;
+$font-size-body: 14px;
 
-body{
+$font-weight-bold: 700;
+$font-weight-regular: 400;
+
+body {
   display: flex;
   justify-content: center;
-
 }
+
 main {
   padding-top: $nav-bar-height;
-  width: 90%;
+  width: 85%;
   display: flex;
   justify-content: center;
   flex-direction: column;
 
+  .story-overview {
+    margin-top: $margin-top-first;
+    margin-bottom: 50px;
+  }
+
+  .story-title {
+    margin-bottom: 40px;
+  }
+
   .story-author {
-    font-size: 16px;
+    font-size: $font-size-body;
     font-style: normal;
-    font-weight: 700;
+    font-weight: $font-weight-regular;
+    font-style: italic;
     line-height: normal;
   }
 
   h1 {
-    font-size: 26px;
+    font-size: $font-size-header;
     font-style: normal;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     line-height: normal;
   }
 
   h2 {
-    font-size: 10px;
+    font-size: $font-size-subheader;
   }
 
-  .complete-status{
+  p {
+    margin: 14px 0;
+  }
+
+  .complete-status {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .complete-button{
-      a{
-        p{
-          padding: 3px;
+    .complete-button {
+      a {
+        text-decoration: none;
+
+        p {
+          padding: 8px;
           color: $background-colour;
           background-color: $primary-colour;
           margin: 0px;
         }
+
+        p:hover {
+          background-color: $background-colour;
+          border: 1px solid $primary-colour;
+          color: $primary-colour;
+        }
       }
+
     }
   }
 
   .contributions-title {
-    margin-top: 5px;
+    margin: 0 0 20px 0;
     font-size: 26px;
     font-style: normal;
     font-weight: 700;
@@ -61,33 +93,35 @@ main {
   .new-contribution {
     display: flex;
     width: 100%;
-    align-items: baseline;
+    align-items: center;
     flex-direction: column;
-    margin-top: 24px;
 
     form {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      width: 100%;
 
       textarea {
         display: flex;
-        border-left: none;
-        border-right: none;
-        border-top: none;
+        border: none;
 
-        border-bottom: 3px solid $primary-colour;
         resize: none;
-        width: 309px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        background-color: $background-colour;
+        margin: 0 0 20px 0;
+        background-color: $textbox-colour;
 
-        font-size: 10px;
+        font-size: $font-size-body;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        padding: 8px;
+
+        width: 100%;
+      }
+
+      textarea:focus {
+        outline: none;
       }
 
       div {
@@ -97,51 +131,67 @@ main {
 
       }
 
-      input {
-        background-color: $primary-colour;
+      button {
+        padding: 8px;
+        box-sizing: content-box;
         color: $background-colour;
+        background-color: $primary-colour;
         border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: $background-colour;
+        border: 1px solid $primary-colour;
+        color: $primary-colour;
       }
     }
   }
 
   .contributions {
     width: 100%;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin: 50px 0;
+
+    .contributions-title {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
     .contribution {
-      .like-button-count{
+      margin-bottom: 40px;
+
+      .like-button-count {
         display: flex;
       }
 
       .contribution-body {
-        font-size: 10px;
+        font-size: $font-size-body;
         font-style: normal;
-        font-weight: 400;
+        font-weight: $font-weight-regular;
         line-height: normal;
       }
 
       .contribution-author {
-        font-size: 16px;
+        font-size: $font-size-subheader;
         font-style: normal;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         line-height: normal;
       }
 
       .contribution-accepted {
-        font-size: 10px;
+        font-size: $font-size-body;
         font-style: normal;
-        font-weight: 400;
+        font-weight: $font-weight-regular;
         line-height: normal;
         color: $background-colour;
       }
 
       .contribution-accept {
-        font-size: 10px;
+        font-size: $font-size-body;
         font-style: normal;
-        font-weight: 400;
+        font-weight: $font-weight-regular;
         line-height: normal;
-        padding: 3px;
+        padding: 8px;
 
 
         background-color: $primary-colour;
@@ -150,21 +200,28 @@ main {
       }
 
       .contribution-like {
-        font-size: 10px;
+        font-size: $font-size-body;
         font-style: normal;
-        font-weight: 400;
+        font-weight: $font-weight-regular;
         line-height: normal;
-        padding: 3px;
+        padding: 8px;
 
         background-color: $primary-colour;
         color: $background-colour;
         border: none;
       }
 
+      .contribution-like:hover,
+      .contribution-accept:hover {
+        background-color: $background-colour;
+        color: $primary-colour;
+        border: 1px solid $primary-colour;
+      }
+
       .contribution-votes {
-        font-size: 10px;
+        font-size: $font-size-body;
         font-style: normal;
-        font-weight: 400;
+        font-weight: $font-weight-regular;
         line-height: normal;
         margin-left: 10px;
       }
@@ -173,9 +230,9 @@ main {
         display: flex;
         justify-content: space-between;
         align-items: row;
-        border-bottom: 3px solid $primary-colour;
+        border-bottom: 1px solid $primary-colour;
 
-        .like-button-count{
+        .like-button-count {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -190,7 +247,7 @@ $breakpoint-tablet: 768px;
 @media (min-width: $breakpoint-tablet) {
   body {
     main {
-      width: 75%;
+      width: 60%;
     }
   }
 }

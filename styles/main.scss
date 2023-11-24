@@ -1,6 +1,15 @@
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
+
 $nav-bar-height: 62px;
+$margin-top-first: 50px;
+
+$font-size-header: 26px;
+$font-size-subheader: 18px;
+$font-size-body: 14px;
+
+$font-weight-bold: 700;
+$font-weight-regular: 400;
 
 body {
   margin: 0;
@@ -11,17 +20,16 @@ body {
     padding-top: $nav-bar-height;
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 85%;
 
-    font-size: 10px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: $font-weight-regular;
     line-height: normal;
 
     h1 {
-      font-size: 26px;
+      font-size: $font-size-header;
       font-style: normal;
-      font-weight: 700;
+      font-weight: $font-weight-bold;
       line-height: normal;
 
       margin-top: 10px;
@@ -29,16 +37,16 @@ body {
     }
 
     h2 {
-      font-size: 16px;
+      font-size: $font-size-subheader;
       font-style: normal;
-      font-weight: 700;
+      font-weight: $font-weight-bold;
       line-height: normal;
     }
 
     p {
-      font-size: 10px;
+      font-size: $font-size-body;
       font-style: normal;
-      font-weight: 400;
+      font-weight: $font-weight-regular;
       line-height: normal;
     }
 
@@ -50,21 +58,28 @@ body {
       margin-bottom: 19px;
 
       .browse-stories {
-        margin-top: 37px;
+        margin: 30px 0;
       }
 
       .new-story-button {
-        margin-top: 37px;
+        margin: $margin-top-first 0 15px 0;
         height: 56px;
         width: 255px;
         background-color: $primary-colour;
         color: $background-colour;
+        cursor: pointer;
         border: none;
 
         font-size: 26px;
         font-style: normal;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         line-height: normal;
+      }
+
+      .new-story-button:hover {
+        background-color: $background-colour;
+        border: 1px solid $primary-colour;
+        color: $primary-colour;
       }
 
       .story-list {
@@ -73,15 +88,23 @@ body {
         flex-direction: column;
         align-items: center;
 
+        p {
+          margin: 10px 0;
+        }
+
+        .story-overview-author {
+          font-style: italic;
+        }
+
         .story-overview {
           width: 100%;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
           align-items: baseline;
-          border-bottom: solid;
-          border-color: $primary-colour;
-          margin-bottom: 5px;
+          margin-bottom: 30px;
+          border-bottom: 1px solid $primary-colour;
+          padding-bottom: 10px;
 
           .contribute-status {
             width: 95%;
@@ -91,13 +114,18 @@ body {
             align-items: center;
 
             button {
-              padding: 5px;
-            }
-
-            button {
               background-color: $primary-colour;
               color: $background-colour;
+              cursor: pointer;
+              font-size: $font-size-body;
               border: none;
+              padding: 8px;
+            }
+
+            button:hover {
+              background-color: $background-colour;
+              border: 1px solid $primary-colour;
+              color: $primary-colour;
             }
           }
 
@@ -112,7 +140,7 @@ $breakpoint-tablet: 768px;
 @media (min-width: $breakpoint-tablet) {
   body {
     main {
-      width: 75%;
+      width: 60%;
     }
   }
 }

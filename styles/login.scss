@@ -1,39 +1,82 @@
-$nav-bar-height: 62px;
 $primary-colour: #252525;
 $background-colour: #FBFBFB;
+$textbox-colour: #E6E6E6;
+
+$nav-bar-height: 62px;
+$margin-top-first: 50px;
+
+$font-size-header: 26px;
+$font-size-subheader: 18px;
+$font-size-body: 14px;
+
+$font-weight-bold: 700;
+$font-weight-regular: 400;
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
 
 main {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 52px + $nav-bar-height;
+  padding-top: $nav-bar-height;
+  width: 85%;
 
-  form{
+  h1 {
+    margin-top: $margin-top-first;
+  }
+
+  h2 {
+    font-size: $font-size-subheader;
+  }
+
+  form {
     display: flex;
     align-items: left;
     justify-content: center;
     flex-direction: column;
+    font-size: $font-size-body;
+    width: 100%;
 
-    input{
+    input {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: none;
-      border-right: none;
-      border-top: none;
-      border-bottom:3px solid $primary-colour;
       resize: none;
-      width: 309px;
+      width: 100%;
       margin-top: 10px;
-      margin-bottom: 10px;
-      background-color: $background-colour;
+      margin-bottom: 20px;
+      background-color: $textbox-colour;
+      border: none;
+      padding: 8px;
     }
 
-  button{
-    background-color: $primary-colour;
-    color: $background-colour;
-    border: none;
+    button {
+      background-color: $primary-colour;
+      color: $background-colour;
+      border: none;
+      align-self: end;
+      padding: 8px;
+      // width: 25%;
+    }
+
+    button:hover {
+      background-color: $background-colour;
+      border: 1px solid $primary-colour;
+      color: $primary-colour;
+    }
   }
+}
+
+$breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+  body {
+    main {
+      width: 40%;
+    }
   }
 }
