@@ -66,9 +66,9 @@
             <p class="contribution-body"> <%= paragraph %> </p>
           <% } %>
         </div>
-        <!-- Display Accept button if current user is story creator -->
+        <!-- Display Accept button if current user is story creator and story is still Open -->
         <div class="contribution-footer">
-        <% if (userData.id === storyData.user_id) { %>
+        <% if (userData.id === storyData.user_id && storyData.status) { %>
           <a href="#" class="accept-clicker" data-story-id="<%= storyData.id %>" data-contribution-body="<%= contData[i].body %>" data-contribution-id="<%= contData[i].id %>"><h1 class="contribution-accept"> Accept </h1></a>
         <% } %>
         <p class="contribution-accepted"> <%= contData[i].accepted %> </p>
