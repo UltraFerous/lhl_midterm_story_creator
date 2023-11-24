@@ -23,7 +23,11 @@ router.post('/register', (req, res) => {
       res.redirect('/');
     })
     .catch(error => {
-      console.log(error);
+      res.render('error', {
+        userData: null,
+        statusCode: `Code ${error.code}`,
+        errorMessage: 'That email address already exists in our system. Please choose another email address.'
+      })
     });
 });
 
