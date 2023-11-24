@@ -121,12 +121,6 @@ body {
               border: none;
               padding: 8px;
             }
-
-            button:hover {
-              background-color: $background-colour;
-              border: 1px solid $primary-colour;
-              color: $primary-colour;
-            }
           }
 
         }
@@ -140,7 +134,7 @@ $breakpoint-tablet: 768px;
 @media (min-width: $breakpoint-tablet) {
   body {
     main {
-      width: 60%;
+      width: 40%;
     }
   }
 }

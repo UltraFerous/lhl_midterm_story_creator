@@ -71,12 +71,6 @@ main {
           background-color: $primary-colour;
           margin: 0px;
         }
-
-        p:hover {
-          background-color: $background-colour;
-          border: 1px solid $primary-colour;
-          color: $primary-colour;
-        }
       }
 
     }
@@ -138,12 +132,6 @@ main {
         background-color: $primary-colour;
         border: none;
         cursor: pointer;
-      }
-
-      button:hover {
-        background-color: $background-colour;
-        border: 1px solid $primary-colour;
-        color: $primary-colour;
       }
     }
   }
@@ -211,13 +199,6 @@ main {
         border: none;
       }
 
-      .contribution-like:hover,
-      .contribution-accept:hover {
-        background-color: $background-colour;
-        color: $primary-colour;
-        border: 1px solid $primary-colour;
-      }
-
       .contribution-votes {
         font-size: $font-size-body;
         font-style: normal;
@@ -247,7 +228,7 @@ $breakpoint-tablet: 768px;
 @media (min-width: $breakpoint-tablet) {
   body {
     main {
-      width: 60%;
+      width: 40%;
     }
   }
 }
