@@ -1,6 +1,21 @@
-LHL Node Skeleton
-=========
 
+# Story Creator 
+Story creator is a collaborative writing platform where users come together to write stories. 
+
+An author can post a piece of a story, and afterwards, users can post contributions to continue the story. 
+
+Users can like each other's contributions and the original author can approve a contribution to have it added to the story. 
+
+Once the author is satisfied they can close the story which will prevent any more contributions from being added.
+
+## Screenshots
+![The Homepage](./public/photos/homepage.jpg) 
+
+![An Example Story Page](./public/photos/exampleStoryPage.jpg) 
+
+
+Original LHL Node Skeleton
+=========
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
